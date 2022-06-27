@@ -35,7 +35,7 @@ Install my-project with npm
 
 **Frontend**
 
-<img src="https://www.svgrepo.com/show/354259/react.svg" width="80px"></img>
+<img src="https://www.svgrepo.com/show/306460/nestjs.svg" width="80px" style="filter: invert(1)"></img>
 
 **Backend:**
 
