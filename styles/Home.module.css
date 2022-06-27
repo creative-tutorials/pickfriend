@@ -182,6 +182,8 @@
   display: flex;
   align-items: center;
   margin-top: 20px;
+  flex-wrap: wrap;
+  width: 100%;
 }
 .primeex_body
   .post_board
@@ -216,12 +218,44 @@
   .sponsor_icon
   i {
   font-size: 1.2rem;
+  width: 100%;
   padding: 15px 30px;
   background: #40424a;
   margin-right: 10px;
   border-radius: 5px;
   color: #eeeef0;
   cursor: pointer;
+  /* margin: 5px; */
+}
+.primeex_body
+  .post_board
+  .post_board_content
+  .pst_right
+  .pst_right_bottom
+  .pst_right_bottom_icon
+  .comment_icon,
+.primeex_body
+  .post_board
+  .post_board_content
+  .pst_right
+  .pst_right_bottom
+  .pst_right_bottom_icon
+  .share_icon,
+.primeex_body
+  .post_board
+  .post_board_content
+  .pst_right
+  .pst_right_bottom
+  .pst_right_bottom_icon
+  .save_icon,
+.primeex_body
+  .post_board
+  .post_board_content
+  .pst_right
+  .pst_right_bottom
+  .pst_right_bottom_icon
+  .sponsor_icon {
+  margin-right: 10px;
 }
 .input_box {
   position: absolute;

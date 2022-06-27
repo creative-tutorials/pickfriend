@@ -141,16 +141,33 @@ export default function Home() {
       console.log(doc.data().data.text);
       getpostBrd.appendChild(createEl);
       const counter2 = 0;
+      // generate radom post id
+      let char = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      let upvoterand = "";
+      for (let i = 0; i < 6; i++) {
+        upvoterand += char.charAt(Math.floor(Math.random() * char.length));
+      }
+      let downvoterand = "";
+      for (let i = 0; i < 6; i++) {
+        downvoterand += char.charAt(Math.floor(Math.random() * char.length));
+      }
+      let counterrand = "";
+      for (let i = 0; i < 6; i++) {
+        counterrand += char.charAt(Math.floor(Math.random() * char.length));
+      }
+      console.log("upvoterans => ",upvoterand);
+      console.log("downvoterand => ",downvoterand);
+      console.log("counterrand => ",counterrand);
       createEl.innerHTML += `<div class=${styles.post_board}>
       <div class=${styles.post_board_content}>
         <div class=${styles.pst_left}>
-          <div class=${styles.upvote} id=upvote>
+          <div class=${styles.upvote} id=${upvoterand}>
             <i class="fa-light fa-thumbs-up"></i>
           </div>
-          <div class=${styles.count} id="counter">
+          <div class=${styles.count} id=${counterrand}>
             ${counter2}
           </div>
-          <div class=${styles.downvote} id=downvote>
+          <div class=${styles.downvote} id=${downvoterand}>
             <i class="fa-light fa-thumbs-down"></i>
           </div>
         </div>
@@ -204,13 +221,11 @@ export default function Home() {
         </div>
       </div>
     </div>`;
-      const getC = document.getElementById("counter");
+      const getC = document.querySelector(`#${counterrand}`);
       function upvote() {
         // const storecount2 = counts.current;
 
         counter++;
-        // storecount2.innerText = counter;
-        console.log("upvote");
         getC.innerText = counter;
         if (counter > 5) {
           alert("you cant like more than 5");
@@ -227,12 +242,13 @@ export default function Home() {
           //
         }
       }
-      const upv = document.getElementById("upvote");
+      const upv = document.querySelector(`#${upvoterand}`);
+      console.log(upv);
       upv.onclick = () => {
         console.log("upvote");
         upvote();
       };
-      const downv = document.getElementById("downvote");
+      const downv = document.querySelector(`#${downvoterand}`);
       downv.onclick = () => {
         console.log("downvote");
         downvote();
