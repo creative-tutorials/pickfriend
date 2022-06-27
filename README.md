@@ -33,9 +33,14 @@ Install my-project with npm
     
 ## Tech Stack
 
-**Client:** React, Redux, TailwindCSS
+**Frontend**
 
-**Database:** Firebase
+<img src="https://www.svgrepo.com/show/354259/react.svg" width="80px"></img>
+
+**Backend:**
+
+<img src="https://www.svgrepo.com/show/353735/firebase.svg" width="80px"></img>
+
 
 
 ## Screenshots
