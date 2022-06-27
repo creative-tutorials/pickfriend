@@ -3,11 +3,14 @@
 }
 .header {
   width: 100%;
-  padding: 0px 30px;
+  padding: 15px 30px;
   background: #40424a;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.header .logo {
+  margin-right: 10px;
 }
 .header .nav_links a {
   color: #fff;
@@ -16,8 +19,11 @@
   font-weight: bold;
   padding: 10px;
 }
+.header .search {
+  width: 100%;
+}
 .header .search input {
-  width: 500px;
+  width: 100%;
   height: 40px;
   border: 1px solid #fff;
   background: #eeeef0;
@@ -27,12 +33,17 @@
   color: #40424a;
   outline: none;
 }
+.header .action_links {
+  width: 100%;
+  max-width: 200px;
+}
 .header .action_links a {
+  /* width: 100px; */
   color: #fff;
   text-decoration: none;
   font-size: 1.5rem;
   font-weight: 500;
-  margin-right: 50px;
+  margin-left: 20px;
   padding: 10px;
 }
 .header .user_info {
@@ -97,11 +108,6 @@
   position: relative;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
-.primeex_body .post_board .post_board_content {
-  display: flex;
-  align-items: center;
-  /* justify-content: space-between; */
-}
 .primeex_body .post_board .post_board_content .pst_left {
   position: absolute;
   top: 0;
@@ -128,7 +134,7 @@
   margin-left: 10px;
 }
 .primeex_body .post_board .post_board_content .pst_right {
-  margin-left: 100px;
+  margin-left: 80px;
 }
 .primeex_body
   .post_board
@@ -256,6 +262,7 @@
   .pst_right_bottom_icon
   .sponsor_icon {
   margin-right: 10px;
+  margin-top: 10px;
 }
 .input_box {
   position: absolute;
@@ -385,4 +392,16 @@
   font-weight: 600;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   cursor: pointer;
+}
+
+@media screen and (max-width: 850px) {
+  .primeex_body
+    .post_board
+    .post_board_content
+    .pst_right
+    .pst_right_bottom
+    .pst_right_bottom_text
+    span {
+    font-size: 1rem;
+  }
 }
