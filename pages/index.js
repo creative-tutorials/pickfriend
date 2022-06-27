@@ -133,6 +133,7 @@ export default function Home() {
 
   const getPosts = async () => {
     const getpostBrd = postBrd.current;
+    const usr = localStorage.getItem("user_id");
     const querySnapshot = await getDocs(collection(db, "postRef"));
     querySnapshot.forEach((doc) => {
       const createEl = document.createElement("div");
@@ -155,9 +156,9 @@ export default function Home() {
       for (let i = 0; i < 6; i++) {
         counterrand += char.charAt(Math.floor(Math.random() * char.length));
       }
-      console.log("upvoterans => ",upvoterand);
-      console.log("downvoterand => ",downvoterand);
-      console.log("counterrand => ",counterrand);
+      console.log("upvoterans => ", upvoterand);
+      console.log("downvoterand => ", downvoterand);
+      console.log("counterrand => ", counterrand);
       createEl.innerHTML += `<div class=${styles.post_board}>
       <div class=${styles.post_board_content}>
         <div class=${styles.pst_left}>
@@ -183,7 +184,7 @@ export default function Home() {
                 />
               </div>
               <div class=${styles.usr_post_name}>
-                <span ref=${post_user}></span>
+                <span ref=${post_user} id="getuserhtml"></span>
               </div>
               <div class=${styles.usr_post_time}>
                 <span>
@@ -253,6 +254,18 @@ export default function Home() {
         console.log("downvote");
         downvote();
       };
+      const getuserhtml = document.querySelectorAll("#getuserhtml");
+      if (usr) {
+        console.log("usr => ", usr);
+        getuserhtml.forEach((element) => {
+          element.innerText = "usr";
+        });
+      } else {
+        console.log("no usr");
+        getuserhtml.forEach((element) => {
+          element.innerText = "guest";
+        });
+      }
     });
     // += is used to append the content to the existing content
   };
@@ -265,7 +278,7 @@ export default function Home() {
         <div className={styles.nav_links}>
           <Link href="/">
             <a>
-              <i className="fa-solid fa-house"></i> Home
+              <i className="fa-solid fa-house"></i>
             </a>
           </Link>
         </div>
