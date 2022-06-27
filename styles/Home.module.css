@@ -1,116 +1,354 @@
 .container {
-  padding: 0 2rem;
+  width: 100%;
 }
-
-.main {
-  min-height: 100vh;
-  padding: 4rem 0;
-  flex: 1;
+.header {
+  width: 100%;
+  padding: 0px 30px;
+  background: #40424a;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: space-between;
 }
-
-.footer {
-  display: flex;
-  flex: 1;
-  padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-}
-
-.title a {
-  color: #0070f3;
+.header .nav_links a {
+  color: #fff;
   text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px;
 }
-
-.title a:hover,
-.title a:focus,
-.title a:active {
-  text-decoration: underline;
-}
-
-.title {
-  margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
-}
-
-.title,
-.description {
-  text-align: center;
-}
-
-.description {
-  margin: 4rem 0;
-  line-height: 1.5;
-  font-size: 1.5rem;
-}
-
-.code {
-  background: #fafafa;
+.header .search input {
+  width: 500px;
+  height: 40px;
+  border: 1px solid #fff;
+  background: #eeeef0;
   border-radius: 5px;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
+  padding: 0px 10px;
+  font-size: 16px;
+  color: #40424a;
+  outline: none;
 }
-
-.grid {
+.header .action_links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-right: 50px;
+  padding: 10px;
+}
+.header .user_info {
+  display: flex;
+  align-items: center;
+}
+.primeex_body {
+  width: 100%;
+  padding: 30px 60px;
+}
+.primeex_body .post_div {
+  width: 100%;
+  background: #40424a;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* animation: changeColor 0.5s ease-in-out infinite; */
+}
+@keyframes changeColor {
+  0% {
+    border-color: #40424a;
+  }
+  50% {
+    border-color: #eeeef0;
+  }
+  100% {
+    border-color: #9e9ef6;
+  }
+}
+.primeex_body .post_div .pst_right {
+  width: 100%;
+}
+.primeex_body .post_div .pst_right input {
+  width: 100%;
+  padding: 10px;
+  /* height: 40px; */
+  border: 1px solid #fff;
+  background: #eeeef0;
+  border-radius: 5px;
+  /* padding: 0px 10px; */
+  font-size: 16px;
+  color: #40424a;
+  outline: none;
+}
+.primeex_body .post_div .pst_upload .image_upload i {
+  font-size: 1.5rem;
+  color: #eeeef0;
+  margin-left: 10px;
+}
+.primeex_body .post_div .pst_left {
+  margin-right: 10px;
+}
+.primeex_body .post_board {
+  width: 100%;
+  background: #eeeef0;
+  padding: 30px;
+  border-radius: 5px;
+  margin-top: 30px;
+  position: relative;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+.primeex_body .post_board .post_board_content {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+}
+.primeex_body .post_board .post_board_content .pst_left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 5px;
+  background-color: #40424a;
+  padding: 20px;
+  height: 100%;
+  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
+  flex-direction: column;
 }
-
-.card {
-  margin: 1rem;
-  padding: 1.5rem;
-  text-align: left;
-  color: inherit;
-  text-decoration: none;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 300px;
+.primeex_body .post_board .post_board_content .pst_left i {
+  font-size: 2rem;
+  color: #eeeef0;
+  margin-left: 10px;
+  cursor: pointer;
 }
-
-.card:hover,
-.card:focus,
-.card:active {
-  color: #0070f3;
-  border-color: #0070f3;
-}
-
-.card h2 {
-  margin: 0 0 1rem 0;
+.primeex_body .post_board .post_board_content .pst_left .count {
   font-size: 1.5rem;
+  color: #eeeef0;
+  margin-left: 10px;
 }
-
-.card p {
-  margin: 0;
-  font-size: 1.25rem;
-  line-height: 1.5;
+.primeex_body .post_board .post_board_content .pst_right {
+  margin-left: 100px;
 }
-
-.logo {
-  height: 1em;
-  margin-left: 0.5rem;
+.primeex_body
+  .post_board
+  .post_board_content
+  .pst_right
+  .pst_right_top
+  .usr_post {
+  display: flex;
+  align-items: center;
 }
-
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
-  }
+.primeex_body
+  .post_board
+  .post_board_content
+  .pst_right
+  .pst_right_top
+  .usr_post
+  .usr_post_name
+  span {
+  font-size: 1.2rem;
+  margin-left: 5px;
+}
+.primeex_body
+  .post_board
+  .post_board_content
+  .pst_right
+  .pst_right_top
+  .usr_post
+  .usr_post_time
+  span {
+  color: #232323;
+  margin-left: 5px;
+}
+.primeex_body .post_board .post_board_content .pst_right .pst_right_bottom {
+  margin-top: 10px;
+}
+.primeex_body
+  .post_board
+  .post_board_content
+  .pst_right
+  .pst_right_bottom
+  .pst_right_bottom_text
+  span {
+  font-size: 1.2rem;
+}
+.primeex_body
+  .post_board
+  .post_board_content
+  .pst_right
+  .pst_right_bottom
+  .pst_right_bottom_icon {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+.primeex_body
+  .post_board
+  .post_board_content
+  .pst_right
+  .pst_right_bottom
+  .pst_right_bottom_icon
+  .comment_icon
+  i,
+.primeex_body
+  .post_board
+  .post_board_content
+  .pst_right
+  .pst_right_bottom
+  .pst_right_bottom_icon
+  .share_icon
+  i,
+.primeex_body
+  .post_board
+  .post_board_content
+  .pst_right
+  .pst_right_bottom
+  .pst_right_bottom_icon
+  .save_icon
+  i,
+.primeex_body
+  .post_board
+  .post_board_content
+  .pst_right
+  .pst_right_bottom
+  .pst_right_bottom_icon
+  .sponsor_icon
+  i {
+  font-size: 1.2rem;
+  padding: 15px 30px;
+  background: #40424a;
+  margin-right: 10px;
+  border-radius: 5px;
+  color: #eeeef0;
+  cursor: pointer;
+}
+.input_box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 100%;
+  max-width: 940px;
+  padding: 30px;
+  background: #eeeef0;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  pointer-events: none;
+}
+.input_box .tabs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.input_box .tabs .tab {
+  padding: 15px 20px;
+  background: transparent;
+  width: 100%;
+  margin-right: 10px;
+  font-size: 1.3rem;
+  border-right: 1px solid #232323;
+  cursor: pointer;
+  user-select: none;
+}
+.input_box .tabs .tab i {
+  margin-right: 5px;
+}
+.input_box .titleInput {
+  margin-top: 20px;
+  width: 100%;
+}
+.input_box .titleInput input {
+  width: 100%;
+  padding: 15px 30px;
+  background: #dbdbdb;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+.input_box .textInput .textEdit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.input_box .textInput .textEdit .icon {
+  margin-top: 20px;
+}
+.input_box .textInput .textEdit .icon i {
+  width: 100px;
+  padding: 15px 20px;
+  background: #dbdbdb;
+  /* margin-right: 10px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.3rem;
+  border: 1px solid #232323;
+  transition: 0.3s ease-in-out;
+}
+.input_box .textInput .textEdit .icon i:hover {
+  background: #232323;
+  color: #eeeef0;
+}
+.input_box .textInput textarea {
+  width: 100%;
+  height: 200px;
+  max-height: 300px;
+  min-height: 200px;
+  padding: 15px 30px;
+  background: #dbdbdb;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  resize: vertical;
+  margin-top: 20px;
+  font-size: 1.3rem;
+}
+.seprate {
+  margin-top: 20px;
+}
+.seprate .seprate_line {
+  width: 100%;
+  height: 1px;
+  background: #232323;
+  margin-top: 20px;
+}
+.opButtons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+.opButtons button {
+  padding: 15px 30px;
+  background: #40424a;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  color: #eeeef0;
+  cursor: pointer;
+  margin-right: 10px;
+  font-size: 16px;
+}
+.opButtons button:hover {
+  background: #323240;
+  color: #eeeef0;
+}
+.close i {
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  border-radius: 50px;
+  position: absolute;
+  display: block;
+  top: 0;
+  right: 0;
+  text-align: center;
+  line-height: 50px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
 }
