@@ -1,34 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# PrimeEX Media📸
 
-First, run the development server:
+![App Screenshot](https://media4.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif?cid=ecf05e47zweq7cq4abk5hhlwj6eblsfy52xm7mug2ooaysdj&rid=giphy.gif&ct=g)
+
+PrimeEX is a social media web application that allows you to upload your favorite images, thoughts and inspirational quotes
+PrimeEX is a social media app that allows you to post your thoughts freely
+
+
+## Authors
+
+- [@treasurealekhojie](https://github.com/creative-tutorials)
+
+
+## Demo
+
+Demo Coming Soon
+
+
+## Feedback
+
+If you have any feedback, please reach out to us at treasureedesemhen500@gmail.com
+
+
+## Installation
+
+Install my-project with npm
 
 ```bash
-npm run dev
-# or
-yarn dev
+  npm install primeex
+  cd my-project
 ```
+    
+## Tech Stack
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Client:** React, Redux, TailwindCSS
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+**Database:** Firebase
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Screenshots
 
-## Learn More
+![App Screenshot](/public/screenshot%20(17).png)
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Support
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+For support, email treasureedesemhen500@gmail.com or join our Slack channel.
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Optimizations
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+To make app better we do optimize the app E.g. refactors, performance improvements, accessibility, design
