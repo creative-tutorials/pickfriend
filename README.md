@@ -50,7 +50,7 @@ Install my-project with npm
 
 ## Support
 
-For support, email treasureedesemhen500@gmail.com or join our Slack channel.
+For support, email treasureedesemhen500@gmail.com or join our [`Discord channel`](https://discord.com).
 
 
 ## Optimizations
