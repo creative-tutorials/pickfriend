@@ -49,6 +49,11 @@
 .header .user_info {
   display: flex;
   align-items: center;
+  /* margin-right: 120px; */
+}
+.header .user_info .user_info_name span {
+  color: #fff;
+  margin-left: 5px;
 }
 .primeex_body {
   width: 100%;
