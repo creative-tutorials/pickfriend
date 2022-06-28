@@ -17,13 +17,13 @@ import { initializeApp } from "firebase/app";
 // Your web app's Firebase configuration
 //
 const firebaseConfig = {
-  apiKey: "AIzaSyCGytgKhO6x6WsIPzmyB4fmIfOYL9PlwZc",
-  authDomain: "redditclone-b7474.firebaseapp.com",
-  projectId: "redditclone-b7474",
-  storageBucket: "redditclone-b7474.appspot.com",
-  messagingSenderId: "841817735605",
-  appId: "1:841817735605:web:4f74f7bc95ba19b73859fc",
-  measurementId: "G-TBR5ZYQHQ9",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase
@@ -115,6 +115,7 @@ export default function Home() {
     const retrpostbutton = postbutton.current;
 
     if (retrTextblock === "" || retrTitleblock === "") {
+      alert("please fill in all fields");
       console.log("empty");
     } else {
       // random post sting id
@@ -137,12 +138,14 @@ export default function Home() {
     const querySnapshot = await getDocs(collection(db, "postRef"));
     querySnapshot.forEach((doc) => {
       const createEl = document.createElement("div");
-      // doc.data() is never undefined for query doc snapshots
+      //? doc.data() is never undefined for query doc snapshots
       console.log(doc.id, " => ", doc.data());
       console.log(doc.data().data.text);
       getpostBrd.appendChild(createEl);
-      const counter2 = 0;
-      // generate radom post id
+      //
+      //
+      const counter2 = 0; // counter for upvote and downvote
+      //* generate radom post id
       let char = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       let upvoterand = "";
       for (let i = 0; i < 6; i++) {
@@ -163,13 +166,13 @@ export default function Home() {
       <div class=${styles.post_board_content}>
         <div class=${styles.pst_left}>
           <div class=${styles.upvote} id=${upvoterand}>
-            <i class="fa-light fa-thumbs-up"></i>
+            <i class="fa-light fa-up"></i>
           </div>
           <div class=${styles.count} id=${counterrand}>
             ${counter2}
           </div>
           <div class=${styles.downvote} id=${downvoterand}>
-            <i class="fa-light fa-thumbs-down"></i>
+            <i class="fa-light fa-down"></i>
           </div>
         </div>
         <div class=${styles.pst_right}>
@@ -222,48 +225,48 @@ export default function Home() {
         </div>
       </div>
     </div>`;
-      const getC = document.querySelector(`#${counterrand}`);
+      const getC = document.querySelector(`#${counterrand}`); // selecting the counter element
       function upvote() {
-        // const storecount2 = counts.current;
-
-        counter++;
-        getC.innerText = counter;
+        counter++; // incrementing the counter
+        getC.innerText = counter; // updating the counter element
         if (counter > 5) {
-          alert("you cant like more than 5");
-          counter = 5;
+          // if the counter is greater than 5
+          alert("you cant like more than 5"); // alert the user
+          counter = 5; // set the counter to 5
         }
       }
       function downvote() {
-        counter--;
-        getC.innerText = counter;
+        counter--; // decrementing the counter
+        getC.innerText = counter; // updating the counter element
         if (counter < 1) {
-          counter = 0;
-          // storecount2.innerText = counter;
-          getC.innerText = counter;
+          // if the counter is less than 1
+          counter = 0; // set the counter to 0
+          getC.innerText = counter; // update the counter element
           //
         }
       }
-      const upv = document.querySelector(`#${upvoterand}`);
-      console.log(upv);
+      const upv = document.querySelector(`#${upvoterand}`); // selecting the upvote element
       upv.onclick = () => {
-        console.log("upvote");
-        upvote();
+        // if the upvote element is clicked
+        upvote(); // call the upvote function
       };
-      const downv = document.querySelector(`#${downvoterand}`);
+      const downv = document.querySelector(`#${downvoterand}`); // selecting the downvote element
       downv.onclick = () => {
-        console.log("downvote");
-        downvote();
+        // if the downvote element is clicked
+        downvote(); // call the downvote function
       };
-      const getuserhtml = document.querySelectorAll("#getuserhtml");
+      const getuserhtml = document.querySelectorAll("#getuserhtml"); // selecting the user name element. *using querySelectorAll because the user name is generated dynamically
       if (usr) {
-        console.log("usr => ", usr);
+        // if the user is logged in
+        console.log("usr => ", usr); // log the user details
         getuserhtml.forEach((element) => {
-          element.innerText = "usr";
+          element.innerText = "usr"; // update the user name element
         });
       } else {
+        // if the user is not logged in
         console.log("no usr");
         getuserhtml.forEach((element) => {
-          element.innerText = "guest";
+          element.innerText = "guest"; // update the user name element
         });
       }
     });
@@ -296,15 +299,10 @@ export default function Home() {
               <i className="fa-regular fa-bell"></i>
             </a>
           </Link>
-          <Link href="/create-post">
-            <a>
-              <i className="fa-regular fa-plus"></i>
-            </a>
-          </Link>
         </div>
         <div className={styles.user_info}>
           <div className={styles.user_info_icon}>
-            <Image src="/favicon.ico" width={30} height={30} alt="userimage" />
+            <Image src="/favicon.ico" width={50} height={50} alt="userimage" />
           </div>
           <div className={styles.user_info_name}>
             <span ref={header_user}></span>
@@ -419,6 +417,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      {/* popup input box */}
       <div className={styles.input_box} ref={popup}>
         <div className={styles.tabs}>
           <div className={styles.tab}>
@@ -486,6 +485,7 @@ export default function Home() {
           <i className="fa-light fa-times"></i>
         </div>
       </div>
+      {/* poll menu box */}
     </div>
   );
 }
