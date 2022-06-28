@@ -32,17 +32,29 @@ const db = getFirestore(app);
 
 export default function Home() {
   const [userStatus, setUserStatus] = useState(null);
+  const [poll, setPoll] = useState(["", "", ""]);
   const header_user = useRef();
   const post_user = useRef();
   const popup = useRef();
   const closeicon = useRef();
   const count = useRef();
-  const counts = useRef();
   const titleblock = useRef();
   const textblock = useRef();
   const postbutton = useRef();
   const postBrd = useRef();
-  const [count_num, setCountNum] = useState(1);
+  const pollpop = useRef();
+  const polltitleblock = useRef();
+  const pollInput = useRef();
+  const pollInput2 = useRef();
+  const pollInput3 = useRef();
+  const pollInput4 = useRef();
+  //
+  const pollrefID = "ABCDEFGHIJKLMNOP";
+  let captureID = "";
+  for (let i = 0; i < 6; i++) {
+    captureID += pollrefID.charAt(Math.floor(Math.random() * pollrefID.length));
+  }
+  console.log("CaptureID => ", captureID);
   useEffect(() => {
     //
 
@@ -83,12 +95,22 @@ export default function Home() {
   const hidePopup = () => {
     const popupBx = popup.current.style;
     const popupBx2 = popup.current;
+    const pollpop_ = pollpop.current.style;
+    const pollpop2 = pollpop.current;
+    //
 
     if (popupBx2.id === "show") {
       popupBx.transform = "translate(-50%, -50%) scale(0)";
       popupBx.pointerEvents = "none";
       setTimeout(() => {
         popupBx2.id = "";
+      }, 1000);
+    }
+    if (pollpop2.id === "show") {
+      pollpop_.transform = "translate(-50%, -50%) scale(0)";
+      pollpop_.pointerEvents = "none";
+      setTimeout(() => {
+        pollpop2.id = "";
       }, 1000);
     }
   };
@@ -116,7 +138,6 @@ export default function Home() {
 
     if (retrTextblock === "" || retrTitleblock === "") {
       alert("please fill in all fields");
-      console.log("empty");
     } else {
       // random post sting id
       const postid =
@@ -129,7 +150,6 @@ export default function Home() {
       };
       setDoc(cityRef, { data: post });
     }
-    // console.log("post content");
   };
 
   const getPosts = async () => {
@@ -140,7 +160,7 @@ export default function Home() {
       const createEl = document.createElement("div");
       //? doc.data() is never undefined for query doc snapshots
       console.log(doc.id, " => ", doc.data());
-      console.log(doc.data().data.text);
+      // console.log(doc.data().data.text);
       getpostBrd.appendChild(createEl);
       //
       //
@@ -159,9 +179,6 @@ export default function Home() {
       for (let i = 0; i < 6; i++) {
         counterrand += char.charAt(Math.floor(Math.random() * char.length));
       }
-      console.log("upvoterans => ", upvoterand);
-      console.log("downvoterand => ", downvoterand);
-      console.log("counterrand => ", counterrand);
       createEl.innerHTML += `<div class=${styles.post_board}>
       <div class=${styles.post_board_content}>
         <div class=${styles.pst_left}>
@@ -224,6 +241,152 @@ export default function Home() {
           </div>
         </div>
       </div>
+    </div>
+    `;
+      const getC = document.querySelector(`#${counterrand}`); // selecting the counter element
+      function upvote() {
+        counter++; // incrementing the counter
+        getC.innerText = counter; // updating the counter element
+        if (counter > 5) {
+          // if the counter is greater than 5
+          alert("you cant like more than 5"); // alert the user
+          counter = 5; // set the counter to 5
+        }
+      }
+      function downvote() {
+        counter--; // decrementing the counter
+        getC.innerText = counter; // updating the counter element
+        if (counter < 1) {
+          // if the counter is less than 1
+          counter = 0; // set the counter to 0
+          getC.innerText = counter; // update the counter element
+          //
+        }
+      }
+      const upv = document.querySelector(`#${upvoterand}`); // selecting the upvote element
+      upv.onclick = () => {
+        // if the upvote element is clicked
+        upvote(); // call the upvote function
+      };
+      const downv = document.querySelector(`#${downvoterand}`); // selecting the downvote element
+      downv.onclick = () => {
+        // if the downvote element is clicked
+        downvote(); // call the downvote function
+      };
+      const getuserhtml = document.querySelectorAll("#getuserhtml"); // selecting the user name element. *using querySelectorAll because the user name is generated dynamically
+      if (usr) {
+        // if the user is logged in
+        console.log("usr => ", usr); // log the user details
+        getuserhtml.forEach((element) => {
+          element.innerText = "usr"; // update the user name element
+        });
+      } else {
+        // if the user is not logged in
+        console.log("no usr");
+        getuserhtml.forEach((element) => {
+          element.innerText = "guest"; // update the user name element
+        });
+      }
+    });
+    // *
+    const querySnapshot2 = await getDocs(collection(db, "pollRef"));
+    querySnapshot2.forEach((doc) => {
+      const createEl = document.createElement("div");
+      //? doc.data() is never undefined for query doc snapshots
+      console.log(doc.id, " => ", doc.data());
+      // console.log(doc.data().data.text);
+      getpostBrd.appendChild(createEl);
+      //
+      //
+      const counter2 = 0; // counter for upvote and downvote
+      //* generate radom post id
+      let char = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      let upvoterand = "";
+      for (let i = 0; i < 6; i++) {
+        upvoterand += char.charAt(Math.floor(Math.random() * char.length));
+      }
+      let downvoterand = "";
+      for (let i = 0; i < 6; i++) {
+        downvoterand += char.charAt(Math.floor(Math.random() * char.length));
+      }
+      let counterrand = "";
+      for (let i = 0; i < 6; i++) {
+        counterrand += char.charAt(Math.floor(Math.random() * char.length));
+      }
+      createEl.innerHTML += `<div class=${styles.post_board}>
+      <div class=${styles.post_board_content}>
+        <div class=${styles.pst_left}>
+          <div class=${styles.upvote} id=${upvoterand}>
+            <i class="fa-light fa-up"></i>
+          </div>
+          <div class=${styles.count} id=${counterrand}>
+            ${counter2}
+          </div>
+          <div class={styles.downvote} id=${downvoterand}>
+            <i class="fa-light fa-down"></i>
+          </div>
+        </div>
+        <div class=${styles.pst_right}>
+          <div class=${styles.pst_right_top}>
+            <div class=${styles.usr_post}>
+              <div class=${styles.usr_post_img}>
+                <Image
+                  src="/favicon.ico"
+                  width=${30}
+                  height=${30}
+                  alt="userimage"
+                />
+              </div>
+              <div class=${styles.usr_post_name}>
+                <span ref=${post_user} id="getuserhtml"></span>
+              </div>
+              <div class=${styles.usr_post_time}>
+                <span>
+                  <i class="fa-regular fa-clock"></i>
+                  <span>1 hour ago</span>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class=${styles.pst_right_bottom}>
+            <div class=${styles.pst_right_bottom_text}>
+              <span>${doc.data().data.title}</span>
+              <div class=${styles.polls_context_menu}>
+                <div class=${styles.poll_context}>
+                  <div class=${styles.poll_menu_text}>Option A</div>
+                  <div class=${styles.poll_numb_tab}>5%</div>
+                </div>
+                <div class=${styles.poll_context}>
+                  <div class=${styles.poll_menu_text}>Option B</div>
+                  <div class=${styles.poll_numb_tab}>5%</div>
+                </div>
+                <div class=${styles.poll_context}>
+                  <div class=${styles.poll_menu_text}>Option C</div>
+                  <div class=${styles.poll_numb_tab}>5%</div>
+                </div>
+                <div class=${styles.poll_context}>
+                  <div class=${styles.poll_menu_text}>Option D</div>
+                  <div class=${styles.poll_numb_tab}>5%</div>
+                </div>
+              </div>
+            </div>
+            <div class=${styles.pst_right_bottom_icon}>
+              <div class=${styles.comment_icon}>
+                <i class="fa-regular fa-comment-dots"></i>
+              </div>
+              <div class=${styles.share_icon}>
+                <i class="fa-regular fa-share-alt"></i>
+              </div>
+              <div class=${styles.save_icon}>
+                <i class="fa-regular fa-bookmark"></i>
+              </div>
+              <div class=${styles.sponsor_icon}>
+                <i class="fa-regular fa-user-plus"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>`;
       const getC = document.querySelector(`#${counterrand}`); // selecting the counter element
       function upvote() {
@@ -271,6 +434,68 @@ export default function Home() {
       }
     });
     // += is used to append the content to the existing content
+  };
+  const showPollMenu = async () => {
+    const pollpop_ = pollpop.current.style;
+    const pollpop2 = pollpop.current;
+    const popupBx = popup.current.style;
+    const popupBx2 = popup.current;
+    //
+    pollpop_.transform = "translate(-50%, -50%) scale(1)";
+    pollpop_.pointerEvents = "auto";
+    // give popupBx an ID of "show"
+    pollpop2.id = "show";
+    //
+
+    if (popupBx2.id === "show") {
+      popupBx.transform = "translate(-50%, -50%) scale(0)";
+      popupBx.pointerEvents = "none";
+      setTimeout(() => {
+        popupBx2.id = "";
+      }, 1000);
+    }
+  };
+  const publishPoll = () => {
+    // function to publish the poll
+    // when user clicks on publish poll button
+    const pollTitleBlock = polltitleblock.current.value;
+    const pollInputVal = pollInput.current.value;
+    const pollInputVal2 = pollInput2.current.value;
+    const pollInputVal3 = pollInput3.current.value;
+    const pollInputVal4 = pollInput4.current.value;
+    const pollInputDiv = pollInput.current;
+
+    // pollInputDiv.id = `${captureID}`;
+
+    if (pollTitleBlock === "") {
+      alert("Title is required");
+      return;
+    }
+    if (pollInputVal === "" || pollInputVal2 === "" || pollInputVal3 === "" || pollInputVal4 === "") {
+      alert("Poll is required");
+      return;
+    } else if (pollInputVal.length < 2 || pollInputVal2.length < 2 || pollInputVal3.length < 2 || pollInputVal4.length < 2) {
+      alert("Poll must be at least 2 characters");
+      return;
+    } else if (pollTitleBlock !== "" && pollInput !== "" && pollInput2 !== "" && pollInput3 !== "" && pollInput4 !== "") {
+      // random post sting id
+      const pollid =
+        Math.random().toString(36).substring(2, 15) +
+        Math.random().toString(36).substring(2, 15);
+      const cityRef = doc(db, "pollRef", pollid);
+
+      let poll_menu = {
+        title: pollTitleBlock,
+        poll_tab: pollInputVal,
+        poll_tab2: pollInputVal2,
+        poll_tab3: pollInputVal3,
+        poll_tab4: pollInputVal4,
+      };
+      console.log("poll_menu => ", poll_menu);
+      setDoc(cityRef, {
+        data: poll_menu,
+      });
+    }
   };
   return (
     <div className={styles.container}>
@@ -333,6 +558,13 @@ export default function Home() {
                   // setImage(reader.result);
                   console.log(reader.result);
                 };
+                //* if file size is greater than 500kb, alert the user and stop the upload
+                if (event.target.files[0].size > 500000) {
+                  alert(
+                    "file size is too big upload a smaller file or compress it"
+                  );
+                  event.target.value = "";
+                }
                 // if file is not empty, read the file
                 if (event.target.files[0]) {
                   reader.readAsDataURL(event.target.files[0]);
@@ -340,7 +572,6 @@ export default function Home() {
                   // setImage(null);
                   console.log("file is empty");
                 }
-                // console.log(event.target.files[0]);
               }}
             />
             <div className={styles.image_upload}>
@@ -416,6 +647,85 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <div className={styles.post_board}>
+          <div className={styles.post_board_content}>
+            <div className={styles.pst_left}>
+              <div className={styles.upvote} onClick={upvote}>
+                <i className="fa-light fa-up"></i>
+              </div>
+              <div className={styles.count} ref={count}>
+                {counter}
+              </div>
+              <div className={styles.downvote} onClick={downvote}>
+                <i className="fa-light fa-down"></i>
+              </div>
+            </div>
+            <div className={styles.pst_right}>
+              <div className={styles.pst_right_top}>
+                <div className={styles.usr_post}>
+                  <div className={styles.usr_post_img}>
+                    <Image
+                      src="/favicon.ico"
+                      width={30}
+                      height={30}
+                      alt="userimage"
+                    />
+                  </div>
+                  <div className={styles.usr_post_name}>
+                    <span ref={post_user}></span>
+                  </div>
+                  <div className={styles.usr_post_time}>
+                    <span>
+                      <i className="fa-regular fa-clock"></i>
+                      <span>1 hour ago</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div className={styles.pst_right_bottom}>
+                <div className={styles.pst_right_bottom_text}>
+                  <span>This is me testing the new PrimeEx Poll feature.</span>
+                  <div className={styles.polls_context_menu}>
+                    <div className={styles.poll_context}>
+                      <div className={styles.poll_menu_text}>Option A</div>
+                      <div className={styles.poll_numb_tab}>5%</div>
+                    </div>
+                    <div className={styles.poll_context}>
+                      <div className={styles.poll_menu_text}>Option B</div>
+                      <div className={styles.poll_numb_tab}>5%</div>
+                    </div>
+                    <div className={styles.poll_context}>
+                      <div className={styles.poll_menu_text}>Option C</div>
+                      <div className={styles.poll_numb_tab}>5%</div>
+                    </div>
+                    <div className={styles.poll_context}>
+                      <div className={styles.poll_menu_text}>Option D</div>
+                      <div className={styles.poll_numb_tab}>5%</div>
+                    </div>
+                  </div>
+                </div>
+                <div className={styles.pst_right_bottom_icon}>
+                  {/* comment */}
+                  <div className={styles.comment_icon}>
+                    <i className="fa-regular fa-comment-dots"></i>
+                  </div>
+                  {/* share */}
+                  <div className={styles.share_icon}>
+                    <i className="fa-regular fa-share-alt"></i>
+                  </div>
+                  {/* save */}
+                  <div className={styles.save_icon}>
+                    <i className="fa-regular fa-bookmark"></i>
+                  </div>
+                  {/* sponsor */}
+                  <div className={styles.sponsor_icon}>
+                    <i className="fa-regular fa-user-plus"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       {/* popup input box */}
       <div className={styles.input_box} ref={popup}>
@@ -428,7 +738,7 @@ export default function Home() {
             <i className="fa-light fa-image"></i>
             <span>Images & Video</span>
           </div>
-          <div className={styles.tab}>
+          <div className={styles.tab} onClick={showPollMenu}>
             <i className="fa-light fa-square-poll-horizontal"></i>
             <span>Poll</span>
           </div>
@@ -486,6 +796,77 @@ export default function Home() {
         </div>
       </div>
       {/* poll menu box */}
+      <div className={styles.poll_box} ref={pollpop}>
+        <div className={styles.poll_box_top}>
+          <div className={styles.titleInput}>
+            <input
+              type="text"
+              placeholder="Title"
+              maxLength={300}
+              ref={polltitleblock}
+            />
+          </div>
+        </div>
+        <div className={styles.poll_box_bottom}>
+          <div className={styles.seprate}>
+            <div className={styles.seprate_line}></div>
+          </div>
+          <div className={styles.poll_add_menu}>
+            <div className={styles.poll_input}>
+              <input
+                type="text"
+                placeholder="OptionA"
+                id="getinput"
+                ref={pollInput}
+              />
+            </div>
+            <div className={styles.poll_input}>
+              <input
+                type="text"
+                placeholder="OptionB"
+                id="getinput"
+                ref={pollInput2}
+              />
+            </div>
+            <div className={styles.poll_input}>
+              <input
+                type="text"
+                placeholder="OptionB"
+                id="getinput"
+                ref={pollInput3}
+              />
+            </div>
+            <div className={styles.poll_input}>
+              <input
+                type="text"
+                placeholder="OptionB"
+                id="getinput"
+                ref={pollInput4}
+              />
+            </div>
+            <div className={styles.add_button}>
+              <button>Add Option</button>
+            </div>
+          </div>
+          <div className={styles.opButtons}>
+            <div className={styles.opButtons_left}>
+              <button>Save Draft</button>
+            </div>
+            <div className={styles.opButtons_right}>
+              <button
+                className={styles.active}
+                onClick={publishPoll}
+                ref={postbutton}
+              >
+                Post
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className={styles.close} ref={closeicon} onClick={hidePopup}>
+          <i className="fa-light fa-times"></i>
+        </div>
+      </div>
     </div>
   );
 }

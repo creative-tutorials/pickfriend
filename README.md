@@ -14,21 +14,28 @@ PrimeEX is a social media app that allows you to post your thoughts freely
 
 ## Demo
 
-Demo Coming Soon
+Demo Coming Soon 🚀
 
 
 ## Feedback
 
-If you have any feedback, please reach out to us at treasureedesemhen500@gmail.com
+If you have any feedback, please reach out to us at [PrimeEXMedia](mailto:treasureedesemhen500@gmail.com)
 
 
 ## Installation
 
-Install my-project with npm
+Install primeex with npm
 
 ```bash
   npm install primeex
-  cd my-project
+  cd primeex
+```
+
+Install primeex with yarn
+
+```bash
+  yarn add primeex
+  cd primeex
 ```
     
 ## Tech Stack
@@ -45,7 +52,7 @@ Install my-project with npm
 
 ## Screenshots
 
-![App Screenshot](/public/screenshot%20(17).png)
+![App Screenshot](/public/screenshot.png)
 
 
 ## Support

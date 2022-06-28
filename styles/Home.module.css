@@ -117,7 +117,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  border-radius: 5px;
+  border-radius: 5px 0 0 5px;
   background-color: #40424a;
   padding: 20px;
   height: 100%;
@@ -195,6 +195,7 @@
   margin-top: 20px;
   flex-wrap: wrap;
   width: 100%;
+  text-align: center;
 }
 .primeex_body
   .post_board
@@ -409,4 +410,95 @@
     span {
     font-size: 1rem;
   }
+}
+
+.poll_box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 940px;
+  padding: 30px;
+  background: #eeeef0;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+.poll_box .poll_box_top .titleInput {
+  margin-top: 20px;
+  width: 100%;
+}
+.poll_box .poll_box_top .titleInput input {
+  width: 100%;
+  padding: 15px 30px;
+  background: #dbdbdb;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+.poll_box .poll_box_bottom .poll_add_menu {
+  margin-top: 20px;
+}
+.poll_box .poll_box_bottom .poll_add_menu .poll_input input {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px 30px;
+  margin: 10px;
+  border-radius: 3px;
+  outline: none;
+  border: 1px solid #232323;
+}
+.poll_box .poll_box_bottom .poll_add_menu .add_button {
+  margin-top: 20px;
+  margin: 10px;
+}
+.poll_box .poll_box_bottom .poll_add_menu .add_button button {
+  padding: 10px 20px;
+  background: #eeeef0;
+  border-radius: 3px;
+  outline: none;
+  border: 1px solid #232323;
+  color: #232323;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/*  */
+.polls_context_menu {
+  margin-top: 10px;
+}
+.polls_context_menu .poll_context {
+  padding: 10px 20px;
+  background: #babacf;
+  margin-top: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+.polls_context_menu .poll_context::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5%;
+  /* max-width: 100px; */
+  height: 100%;
+  background: #6c6c88;
+  opacity: 0.7;
+  border-radius: 5px;
+  transition: all 0.5s ease-in-out;
+}
+.polls_context_menu .poll_context .poll_numb_tab {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #232323;
+  position: relative;
+}
+.polls_context_menu .poll_context .poll_menu_text {
+  position: relative;
 }
