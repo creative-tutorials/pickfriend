@@ -37,6 +37,10 @@ Install primeex with yarn
   yarn add primeex
   cd primeex
 ```
+
+```
+Note that the CLI is not yet available for the browser. We will be adding it soon once the full web application is ready.
+```
     
 ## Tech Stack
 
@@ -63,3 +67,25 @@ For support, email treasureedesemhen500@gmail.com or join our [`Discord channel`
 ## Optimizations
 
 To make app better we do optimize the app E.g. refactors, performance improvements, accessibility, design
+
+
+## FAQ
+
+
+- **Question 1:** What is PrimeEX?
+- **Answer 1:** PrimeEX is a social media web application that allows you to upload your favorite images, thoughts and inspirational quotes
+
+- **Question 2:** What can I do with PrimeEX?
+
+- **Answer 2:** You can upload your images, thoughts and inspirational quotes to PrimeEX and share them with your friends.
+
+
+- **Question 3:** Is PrimeEX free?
+
+- **Answer 3:** Yes, PrimeEX is free to use.
+
+
+
+## Privacy Policy
+
+Our Privacy Policy states that we do not collect any sensitive information from you. We only collect information that is necessary to provide the services you request, which includes your name, email address, and any other information you provide to us.
