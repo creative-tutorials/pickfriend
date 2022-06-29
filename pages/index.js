@@ -299,6 +299,10 @@ export default function Home() {
       //
       //
       const counter2 = 0; // counter for upvote and downvote
+      const poll_count = 5; // counter for upvote and downvote
+      const poll_count2 = 5; // counter for upvote and downvote
+      const poll_count3 = 5; // counter for upvote and downvote
+      const poll_count4 = 5; // counter for upvote and downvote
       //* generate radom post id
       let char = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       let upvoterand = "";
@@ -313,6 +317,55 @@ export default function Home() {
       for (let i = 0; i < 6; i++) {
         counterrand += char.charAt(Math.floor(Math.random() * char.length));
       }
+      let randomPollNumb = "";
+      for (let i = 0; i < 6; i++) {
+        randomPollNumb += char.charAt(Math.floor(Math.random() * char.length));
+      }
+      let randomPollNumb2 = "";
+      for (let i = 0; i < 6; i++) {
+        randomPollNumb2 += char.charAt(Math.floor(Math.random() * char.length));
+      }
+      let randomPollNumb3 = "";
+      for (let i = 0; i < 6; i++) {
+        randomPollNumb3 += char.charAt(Math.floor(Math.random() * char.length));
+      }
+      let randomPollNumb4 = "";
+      for (let i = 0; i < 6; i++) {
+        randomPollNumb4 += char.charAt(Math.floor(Math.random() * char.length));
+      }
+      let pollPercent = "";
+      for (let i = 0; i < 6; i++) {
+        pollPercent += char.charAt(Math.floor(Math.random() * char.length));
+      }
+      let pollPercent2 = "";
+      for (let i = 0; i < 6; i++) {
+        pollPercent2 += char.charAt(Math.floor(Math.random() * char.length));
+      }
+      let pollPercent3 = "";
+      for (let i = 0; i < 6; i++) {
+        pollPercent3 += char.charAt(Math.floor(Math.random() * char.length));
+      }
+      let pollPercent4 = "";
+      for (let i = 0; i < 6; i++) {
+        pollPercent4 += char.charAt(Math.floor(Math.random() * char.length));
+      }
+      let dragID = "";
+      for (let i = 0; i < 6; i++) {
+        dragID += char.charAt(Math.floor(Math.random() * char.length));
+      }
+      let dragID2 = "";
+      for (let i = 0; i < 6; i++) {
+        dragID2 += char.charAt(Math.floor(Math.random() * char.length));
+      }
+      let dragID3 = "";
+      for (let i = 0; i < 6; i++) {
+        dragID3 += char.charAt(Math.floor(Math.random() * char.length));
+      }
+      let dragID4 = "";
+      for (let i = 0; i < 6; i++) {
+        dragID4 += char.charAt(Math.floor(Math.random() * char.length));
+      }
+      console.log("PollPercent => ", pollPercent);
       createEl.innerHTML += `<div class=${styles.post_board}>
       <div class=${styles.post_board_content}>
         <div class=${styles.pst_left}>
@@ -352,21 +405,41 @@ export default function Home() {
             <div class=${styles.pst_right_bottom_text}>
               <span>${doc.data().data.title}</span>
               <div class=${styles.polls_context_menu}>
-                <div class=${styles.poll_context}>
-                  <div class=${styles.poll_menu_text}>Option A</div>
-                  <div class=${styles.poll_numb_tab}>5%</div>
+                <div class=${styles.poll_context} id=${randomPollNumb}>
+                  <div class=${styles.poll_menu_text}>${
+        doc.data().data.poll_tab
+      }</div>
+                  <div class=${
+                    styles.poll_numb_tab
+                  } id=${pollPercent}>${poll_count}</div>
+                  <div class=${styles.poll_drag} id=${dragID}></div>
                 </div>
-                <div class=${styles.poll_context}>
-                  <div class=${styles.poll_menu_text}>Option B</div>
-                  <div class=${styles.poll_numb_tab}>5%</div>
+                <div class=${styles.poll_context} id=${randomPollNumb2}>
+                  <div class=${styles.poll_menu_text}>${
+        doc.data().data.poll_tab2
+      }</div>
+                  <div class=${
+                    styles.poll_numb_tab
+                  } id=${pollPercent2}>${poll_count2}</div>
+                  <div class=${styles.poll_drag} id=${dragID2}></div>
                 </div>
-                <div class=${styles.poll_context}>
-                  <div class=${styles.poll_menu_text}>Option C</div>
-                  <div class=${styles.poll_numb_tab}>5%</div>
+                <div class=${styles.poll_context} id=${randomPollNumb3}>
+                  <div class=${styles.poll_menu_text}>${
+        doc.data().data.poll_tab3
+      }</div>
+                  <div class=${
+                    styles.poll_numb_tab
+                  } id=${pollPercent3}>${poll_count3}</div>
+                  <div class=${styles.poll_drag} id=${dragID3}></div>
                 </div>
-                <div class=${styles.poll_context}>
-                  <div class=${styles.poll_menu_text}>Option D</div>
-                  <div class=${styles.poll_numb_tab}>5%</div>
+                <div class=${styles.poll_context} id=${randomPollNumb4}>
+                  <div class=${styles.poll_menu_text}>${
+        doc.data().data.poll_tab4
+      }</div>
+                  <div class=${
+                    styles.poll_numb_tab
+                  } id=${pollPercent4}>${poll_count4}</div>
+                  <div class=${styles.poll_drag} id=${dragID4}></div>
                 </div>
               </div>
             </div>
@@ -389,6 +462,14 @@ export default function Home() {
       </div>
     </div>`;
       const getC = document.querySelector(`#${counterrand}`); // selecting the counter element
+      const pollPx = document.querySelector(`#${pollPercent}`);
+      const pollPx2 = document.querySelector(`#${pollPercent2}`);
+      const pollPx3 = document.querySelector(`#${pollPercent3}`);
+      const pollPx4 = document.querySelector(`#${pollPercent4}`);
+      const pollDrag = document.querySelector(`#${dragID}`)
+      const pollDrag2 = document.querySelector(`#${dragID2}`)
+      const pollDrag3 = document.querySelector(`#${dragID3}`)
+      const pollDrag4 = document.querySelector(`#${dragID4}`)
       function upvote() {
         counter++; // incrementing the counter
         getC.innerText = counter; // updating the counter element
@@ -408,6 +489,53 @@ export default function Home() {
           //
         }
       }
+      function updatePoll() {
+        // if the poll tab element is clicked
+        // multiply the counter by 10
+        // and update the poll tab element
+        poll_count = poll_count * 2;
+        pollPx.innerText = poll_count + "%"; // update the poll tab element
+        pollDrag.style.width = poll_count + "%"; // update the poll drag element
+        if (poll_count > 100) {
+          poll_count = 100;
+          pollPx.innerText = poll_count + "%";
+          pollDrag.style.width = poll_count + "%";
+        } // if the poll count is greater than 100
+        console.log(poll_count);
+      }
+      function updatePoll2() {
+        poll_count2 = poll_count2 * 2;
+        pollPx2.innerText = poll_count2 + "%";
+        pollDrag2.style.width = poll_count2 + "%";
+        if (poll_count2 > 100) {
+          poll_count2 = 100;
+          pollPx2.innerText = poll_count2 + "%";
+          pollDrag2.style.width = poll_count2 + "%";
+        }
+        console.log(poll_count);
+      }
+      function updatePoll3() {
+        poll_count3 = poll_count3 * 2;
+        pollPx3.innerText = poll_count3 + "%";
+        pollDrag3.style.width = poll_count3 + "%";
+        if (poll_count3 > 100) {
+          poll_count3 = 100;
+          pollPx3.innerText = poll_count3 + "%";
+          pollDrag3.style.width = poll_count3 + "%";
+        }
+        console.log(poll_count);
+      }
+      function updatePoll4() {
+        poll_count4 = poll_count4 * 2;
+        pollPx4.innerText = poll_count4 + "%";
+        pollDrag4.style.width = poll_count4 + "%";
+        if (poll_count4 > 100) {
+          poll_count4 = 100;
+          pollPx4.innerText = poll_count4 + "%";
+          pollDrag4.style.width = poll_count4 + "%";
+        }
+        console.log(poll_count);
+      }
       const upv = document.querySelector(`#${upvoterand}`); // selecting the upvote element
       upv.onclick = () => {
         // if the upvote element is clicked
@@ -417,6 +545,23 @@ export default function Home() {
       downv.onclick = () => {
         // if the downvote element is clicked
         downvote(); // call the downvote function
+      };
+      const pollCaller = document.querySelector(`#${randomPollNumb}`); // selecting the poll tab element
+      const pollCaller2 = document.querySelector(`#${randomPollNumb2}`); // selecting the poll tab element
+      const pollCaller3 = document.querySelector(`#${randomPollNumb3}`); // selecting the poll tab element
+      const pollCaller4 = document.querySelector(`#${randomPollNumb4}`); // selecting the poll tab element
+
+      pollCaller.onclick = () => {
+        updatePoll();
+      };
+      pollCaller2.onclick = () => {
+        updatePoll2();
+      };
+      pollCaller3.onclick = () => {
+        updatePoll3();
+      };
+      pollCaller4.onclick = () => {
+        updatePoll4();
       };
       const getuserhtml = document.querySelectorAll("#getuserhtml"); // selecting the user name element. *using querySelectorAll because the user name is generated dynamically
       if (usr) {
@@ -463,28 +608,41 @@ export default function Home() {
     const pollInputVal2 = pollInput2.current.value;
     const pollInputVal3 = pollInput3.current.value;
     const pollInputVal4 = pollInput4.current.value;
-    const pollInputDiv = pollInput.current;
-
-    // pollInputDiv.id = `${captureID}`;
 
     if (pollTitleBlock === "") {
       alert("Title is required");
       return;
     }
-    if (pollInputVal === "" || pollInputVal2 === "" || pollInputVal3 === "" || pollInputVal4 === "") {
+    if (
+      pollInputVal === "" ||
+      pollInputVal2 === "" ||
+      pollInputVal3 === "" ||
+      pollInputVal4 === ""
+    ) {
       alert("Poll is required");
       return;
-    } else if (pollInputVal.length < 2 || pollInputVal2.length < 2 || pollInputVal3.length < 2 || pollInputVal4.length < 2) {
+    } else if (
+      pollInputVal.length < 2 ||
+      pollInputVal2.length < 2 ||
+      pollInputVal3.length < 2 ||
+      pollInputVal4.length < 2
+    ) {
       alert("Poll must be at least 2 characters");
       return;
-    } else if (pollTitleBlock !== "" && pollInput !== "" && pollInput2 !== "" && pollInput3 !== "" && pollInput4 !== "") {
+    } else if (
+      pollTitleBlock !== "" &&
+      pollInput !== "" &&
+      pollInput2 !== "" &&
+      pollInput3 !== "" &&
+      pollInput4 !== ""
+    ) {
       // random post sting id
       const pollid =
         Math.random().toString(36).substring(2, 15) +
         Math.random().toString(36).substring(2, 15);
       const cityRef = doc(db, "pollRef", pollid);
 
-      let poll_menu = {
+      const poll_menu = {
         title: pollTitleBlock,
         poll_tab: pollInputVal,
         poll_tab2: pollInputVal2,
@@ -689,18 +847,22 @@ export default function Home() {
                     <div className={styles.poll_context}>
                       <div className={styles.poll_menu_text}>Option A</div>
                       <div className={styles.poll_numb_tab}>5%</div>
+                      <div className={styles.poll_drag}></div>
                     </div>
                     <div className={styles.poll_context}>
                       <div className={styles.poll_menu_text}>Option B</div>
                       <div className={styles.poll_numb_tab}>5%</div>
+                      <div className={styles.poll_drag}></div>
                     </div>
                     <div className={styles.poll_context}>
                       <div className={styles.poll_menu_text}>Option C</div>
                       <div className={styles.poll_numb_tab}>5%</div>
+                      <div className={styles.poll_drag}></div>
                     </div>
                     <div className={styles.poll_context}>
                       <div className={styles.poll_menu_text}>Option D</div>
                       <div className={styles.poll_numb_tab}>5%</div>
+                      <div className={styles.poll_drag}></div>
                     </div>
                   </div>
                 </div>
