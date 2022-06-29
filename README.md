@@ -57,7 +57,7 @@ Install primeex with yarn
 
 ## Support
 
-For support, email treasureedesemhen500@gmail.com or join our [`Discord channel`](https://discord.com).
+For support, email treasureedesemhen500@gmail.com or join our [`Discord channel`](https://discord.gg/AYxRnTC82H).
 
 
 ## Optimizations
