@@ -4,9 +4,11 @@ import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
 import {
   doc,
+  doc as docFuck,
   setDoc,
   getDocs,
   collection,
+  deleteDoc,
   getFirestore,
 } from "firebase/firestore";
 
@@ -466,10 +468,10 @@ export default function Home() {
       const pollPx2 = document.querySelector(`#${pollPercent2}`);
       const pollPx3 = document.querySelector(`#${pollPercent3}`);
       const pollPx4 = document.querySelector(`#${pollPercent4}`);
-      const pollDrag = document.querySelector(`#${dragID}`)
-      const pollDrag2 = document.querySelector(`#${dragID2}`)
-      const pollDrag3 = document.querySelector(`#${dragID3}`)
-      const pollDrag4 = document.querySelector(`#${dragID4}`)
+      const pollDrag = document.querySelector(`#${dragID}`);
+      const pollDrag2 = document.querySelector(`#${dragID2}`);
+      const pollDrag3 = document.querySelector(`#${dragID3}`);
+      const pollDrag4 = document.querySelector(`#${dragID4}`);
       function upvote() {
         counter++; // incrementing the counter
         getC.innerText = counter; // updating the counter element
@@ -495,44 +497,155 @@ export default function Home() {
         // and update the poll tab element
         poll_count = poll_count * 2;
         pollPx.innerText = poll_count + "%"; // update the poll tab element
+        localStorage.setItem("poll_count", poll_count + "%");
         pollDrag.style.width = poll_count + "%"; // update the poll drag element
+
+        const pollid =
+          Math.random().toString(36).substring(2, 15) +
+          Math.random().toString(36).substring(2, 15);
+        const voteRef = docFuck(db, "pollRef", pollid);
+
+        const poll_menu = {
+          title: localStorage.getItem("poll_title"),
+          poll_tab: localStorage.getItem("poll_tab"),
+          poll_tab2: localStorage.getItem("poll_tab2"),
+          poll_tab3: localStorage.getItem("poll_tab3"),
+          poll_tab4: localStorage.getItem("poll_tab4"),
+          poll_count: localStorage.getItem("poll_count"),
+        };
+        setDoc(voteRef, {
+          data: poll_menu,
+        });
+        setTimeout(() => {
+          deleteDoc(docFuck(db, "pollRef", localStorage.getItem("previousID")));
+        }, 1000);
+
         if (poll_count > 100) {
           poll_count = 100;
           pollPx.innerText = poll_count + "%";
+          localStorage.setItem("poll_count", poll_count + "%");
           pollDrag.style.width = poll_count + "%";
+
+          const poll_menu = {
+            title: localStorage.getItem("poll_title"),
+            poll_tab: localStorage.getItem("poll_tab"),
+            poll_tab2: localStorage.getItem("poll_tab2"),
+            poll_tab3: localStorage.getItem("poll_tab3"),
+            poll_tab4: localStorage.getItem("poll_tab4"),
+            poll_count: localStorage.getItem("poll_count"),
+          };
+
+          setDoc(voteRef, {
+            data: poll_menu,
+          });
         } // if the poll count is greater than 100
         console.log(poll_count);
       }
+
       function updatePoll2() {
         poll_count2 = poll_count2 * 2;
         pollPx2.innerText = poll_count2 + "%";
+        localStorage.setItem("poll_count2", poll_count2 + "%");
+
+        const pollid =
+          Math.random().toString(36).substring(2, 15) +
+          Math.random().toString(36).substring(2, 15);
+        const voteRef = docFuck(db, "pollRef", pollid);
+
+        const votes = {
+          data_count2: localStorage.getItem("poll_count2"),
+        };
+
+        setDoc(voteRef, {
+          datas: votes,
+        });
+
         pollDrag2.style.width = poll_count2 + "%";
         if (poll_count2 > 100) {
           poll_count2 = 100;
           pollPx2.innerText = poll_count2 + "%";
+          localStorage.setItem("poll_count2", poll_count2 + "%");
           pollDrag2.style.width = poll_count2 + "%";
+
+          const votes = {
+            data_count2: localStorage.getItem("poll_count2"),
+          };
+
+          setDoc(voteRef, {
+            datas: votes,
+          });
         }
         console.log(poll_count);
       }
+
       function updatePoll3() {
         poll_count3 = poll_count3 * 2;
         pollPx3.innerText = poll_count3 + "%";
+        localStorage.setItem("poll_count3", poll_count3 + "%");
+
+        const pollid =
+          Math.random().toString(36).substring(2, 15) +
+          Math.random().toString(36).substring(2, 15);
+        const voteRef = docFuck(db, "pollRef", pollid);
+
+        const votes = {
+          data_count3: localStorage.getItem("poll_count3"),
+        };
+
+        setDoc(voteRef, {
+          datas: votes,
+        });
+
         pollDrag3.style.width = poll_count3 + "%";
         if (poll_count3 > 100) {
           poll_count3 = 100;
           pollPx3.innerText = poll_count3 + "%";
+          localStorage.setItem("poll_count3", poll_count3 + "%");
           pollDrag3.style.width = poll_count3 + "%";
+
+          const votes = {
+            data_count3: localStorage.getItem("poll_count3"),
+          };
+
+          setDoc(voteRef, {
+            datas: votes,
+          });
         }
         console.log(poll_count);
       }
+
       function updatePoll4() {
         poll_count4 = poll_count4 * 2;
         pollPx4.innerText = poll_count4 + "%";
+        localStorage.setItem("poll_count4", poll_count4 + "%");
         pollDrag4.style.width = poll_count4 + "%";
+
+        const pollid =
+          Math.random().toString(36).substring(2, 15) +
+          Math.random().toString(36).substring(2, 15);
+        const voteRef = docFuck(db, "pollRef", pollid);
+
+        const votes = {
+          data_count4: localStorage.getItem("poll_count4"),
+        };
+
+        setDoc(voteRef, {
+          datas: votes,
+        });
+
         if (poll_count4 > 100) {
           poll_count4 = 100;
           pollPx4.innerText = poll_count4 + "%";
+          localStorage.setItem("poll_count4", poll_count4 + "%");
           pollDrag4.style.width = poll_count4 + "%";
+
+          const votes = {
+            data_count4: localStorage.getItem("poll_count4"),
+          };
+
+          setDoc(voteRef, {
+            datas: votes,
+          });
         }
         console.log(poll_count);
       }
@@ -553,16 +666,86 @@ export default function Home() {
 
       pollCaller.onclick = () => {
         updatePoll();
+
+        localStorage.setItem("tabDisabled", true);
+
+        const checkLocalStorage = localStorage.getItem("tabDisabled");
+
+        if (checkLocalStorage === "true") {
+          console.log("local storage set");
+          pollCaller.style.pointerEvents = "none";
+          pollCaller2.style.pointerEvents = "none";
+          pollCaller3.style.pointerEvents = "none";
+          pollCaller4.style.pointerEvents = "none";
+        } else {
+          console.log("local storage set");
+        }
       };
       pollCaller2.onclick = () => {
         updatePoll2();
+
+        localStorage.setItem("tabDisabled", true);
+
+        const checkLocalStorage = localStorage.getItem("tabDisabled");
+
+        if (checkLocalStorage === "true") {
+          console.log("local storage set");
+          pollCaller.style.pointerEvents = "none";
+          pollCaller2.style.pointerEvents = "none";
+          pollCaller3.style.pointerEvents = "none";
+          pollCaller4.style.pointerEvents = "none";
+        } else {
+          console.log("local storage set");
+        }
       };
       pollCaller3.onclick = () => {
         updatePoll3();
+
+        localStorage.setItem("tabDisabled", true);
+
+        const checkLocalStorage = localStorage.getItem("tabDisabled");
+
+        if (checkLocalStorage === "true") {
+          console.log("local storage set");
+          pollCaller.style.pointerEvents = "none";
+          pollCaller2.style.pointerEvents = "none";
+          pollCaller3.style.pointerEvents = "none";
+          pollCaller4.style.pointerEvents = "none";
+        } else {
+          console.log("local storage set");
+        }
       };
       pollCaller4.onclick = () => {
         updatePoll4();
+
+        localStorage.setItem("tabDisabled", true);
+
+        const checkLocalStorage = localStorage.getItem("tabDisabled");
+
+        if (checkLocalStorage === "true") {
+          console.log("local storage set");
+          pollCaller.style.pointerEvents = "none";
+          pollCaller2.style.pointerEvents = "none";
+          pollCaller3.style.pointerEvents = "none";
+          pollCaller4.style.pointerEvents = "none";
+        } else {
+          console.log("local storage set");
+        }
       };
+
+      setTimeout(() => {
+        // remove pointer events
+        // if localstorage "tabDisabled" is present
+        if (localStorage.getItem("tabDisabled") === "true") {
+          console.log("local storage set");
+          pollCaller.style.pointerEvents = "none";
+          pollCaller2.style.pointerEvents = "none";
+          pollCaller3.style.pointerEvents = "none";
+          pollCaller4.style.pointerEvents = "none";
+        } else {
+          console.log("local storage not set");
+        }
+      }, 1000); // wait 1 seconds
       const getuserhtml = document.querySelectorAll("#getuserhtml"); // selecting the user name element. *using querySelectorAll because the user name is generated dynamically
       if (usr) {
         // if the user is logged in
@@ -649,10 +832,19 @@ export default function Home() {
         poll_tab3: pollInputVal3,
         poll_tab4: pollInputVal4,
       };
+      localStorage.setItem("poll_title", pollTitleBlock);
+      localStorage.setItem("poll_tab", pollInputVal);
+      localStorage.setItem("poll_tab2", pollInputVal2);
+      localStorage.setItem("poll_tab3", pollInputVal3);
+      localStorage.setItem("poll_tab4", pollInputVal4);
       console.log("poll_menu => ", poll_menu);
       setDoc(cityRef, {
         data: poll_menu,
       });
+
+      setTimeout(() => {
+        localStorage.setItem("previousID", pollid);
+      }, 1000);
     }
   };
   return (
@@ -1005,9 +1197,6 @@ export default function Home() {
                 id="getinput"
                 ref={pollInput4}
               />
-            </div>
-            <div className={styles.add_button}>
-              <button>Add Option</button>
             </div>
           </div>
           <div className={styles.opButtons}>

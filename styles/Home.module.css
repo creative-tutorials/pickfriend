@@ -4,10 +4,15 @@
 .header {
   width: 100%;
   padding: 15px 30px;
-  background: #40424a;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(90, 118, 132, 0.75);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-radius: 0 0 5px 5px;
 }
 .header .logo {
   margin-right: 10px;
@@ -61,7 +66,11 @@
 }
 .primeex_body .post_div {
   width: 100%;
-  background: #40424a;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(90, 118, 132, 0.75);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
   padding: 20px;
   border-radius: 5px;
   border: 1px solid transparent;
@@ -118,7 +127,7 @@
   top: 0;
   left: 0;
   border-radius: 5px 0 0 5px;
-  background-color: #40424a;
+  background: #74A7D6;
   padding: 20px;
   height: 100%;
   text-align: center;
@@ -232,13 +241,21 @@
   font-size: 1.2rem;
   width: 100%;
   padding: 15px 30px;
-  background: #40424a;
+  background: #74A7D6;
   margin-right: 10px;
   border-radius: 5px;
   color: #eeeef0;
   cursor: pointer;
   /* margin: 5px; */
 }
+.primeex_body
+  .post_board
+  .post_board_content
+  .pst_right
+  .pst_right_bottom
+  .pst_right_bottom_icon i:hover {
+  background: #5A91C6;
+  }
 .primeex_body
   .post_board
   .post_board_content
@@ -451,39 +468,25 @@
   outline: none;
   border: 1px solid #232323;
 }
-.poll_box .poll_box_bottom .poll_add_menu .add_button {
-  margin-top: 20px;
-  margin: 10px;
-}
-.poll_box .poll_box_bottom .poll_add_menu .add_button button {
-  padding: 10px 20px;
-  background: #eeeef0;
-  border-radius: 3px;
-  outline: none;
-  border: 1px solid #232323;
-  color: #232323;
-  cursor: pointer;
-  font-weight: 500;
-}
-
 /*  */
 .polls_context_menu {
   margin-top: 10px;
 }
 .polls_context_menu .poll_context {
   padding: 10px 20px;
-  background: #babacf;
+  background: #74A7D6;
   margin-top: 10px;
   border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
+  cursor: pointer;
 }
 .polls_context_menu .poll_drag {
   width: 5%;
   height: 100%;
-  background: #757596;
+  background: rgb(190, 189, 189);
   opacity: 0.5;
   position: absolute;
   border-radius: inherit;
