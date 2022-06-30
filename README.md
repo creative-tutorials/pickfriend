@@ -56,7 +56,7 @@ Note that the CLI is not yet available for the browser. We will be adding it soo
 
 ## Screenshots
 
-![App Screenshot](/public/screenshot.png)
+  This screenshot has been removed by the developers due to copyright or privacy reasons.
 
 
 ## Support
