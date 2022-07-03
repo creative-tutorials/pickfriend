@@ -226,10 +226,10 @@ export default function Body() {
       //
       //
       const counter2 = 0; // counter for upvote and downvote
-      const poll_count = 5; // counter for upvote and downvote
-      const poll_count2 = 5; // counter for upvote and downvote
-      const poll_count3 = 5; // counter for upvote and downvote
-      const poll_count4 = 5; // counter for upvote and downvote
+      const poll_count = 5; //
+      const poll_count2 = 5; //
+      const poll_count3 = 5; //
+      const poll_count4 = 5; //
       //* generate radom post id
       let char = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       let upvoterand = "";
@@ -474,7 +474,7 @@ export default function Body() {
             poll_tab2: localStorage.getItem("poll_tab2"),
             poll_tab3: localStorage.getItem("poll_tab3"),
             poll_tab4: localStorage.getItem("poll_tab4"),
-            poll_count: localStorage.getItem("poll_count"),
+            data_poll_count: localStorage.getItem("poll_count"),
           };
           setDoc(voteRef, {
             data: getLocalStorageItems,
@@ -497,7 +497,7 @@ export default function Body() {
               poll_tab2: localStorage.getItem("poll_tab2"),
               poll_tab3: localStorage.getItem("poll_tab3"),
               poll_tab4: localStorage.getItem("poll_tab4"),
-              poll_count: localStorage.getItem("poll_count"),
+              data_poll_count: localStorage.getItem("poll_count"),
             };
 
             setDoc(voteRef, {
@@ -524,7 +524,7 @@ export default function Body() {
             poll_tab2: localStorage.getItem("poll_tab2"),
             poll_tab3: localStorage.getItem("poll_tab3"),
             poll_tab4: localStorage.getItem("poll_tab4"),
-            poll_count2: localStorage.getItem("poll_count2"),
+            data_poll_count2: localStorage.getItem("poll_count2"),
           };
 
           setDoc(voteRef, {
@@ -549,7 +549,7 @@ export default function Body() {
               poll_tab2: localStorage.getItem("poll_tab2"),
               poll_tab3: localStorage.getItem("poll_tab3"),
               poll_tab4: localStorage.getItem("poll_tab4"),
-              poll_count2: localStorage.getItem("poll_count2"),
+              data_poll_count2: localStorage.getItem("poll_count2"),
             };
 
             setDoc(voteRef, {
@@ -575,7 +575,7 @@ export default function Body() {
             poll_tab2: localStorage.getItem("poll_tab2"),
             poll_tab3: localStorage.getItem("poll_tab3"),
             poll_tab4: localStorage.getItem("poll_tab4"),
-            poll_count3: localStorage.getItem("poll_count3"),
+            data_poll_count3: localStorage.getItem("poll_count3"),
           };
 
           setDoc(voteRef, {
@@ -600,7 +600,7 @@ export default function Body() {
               poll_tab2: localStorage.getItem("poll_tab2"),
               poll_tab3: localStorage.getItem("poll_tab3"),
               poll_tab4: localStorage.getItem("poll_tab4"),
-              poll_count3: localStorage.getItem("poll_count3"),
+              data_poll_count3: localStorage.getItem("poll_count3"),
             };
 
             setDoc(voteRef, {
@@ -627,7 +627,7 @@ export default function Body() {
             poll_tab2: localStorage.getItem("poll_tab2"),
             poll_tab3: localStorage.getItem("poll_tab3"),
             poll_tab4: localStorage.getItem("poll_tab4"),
-            poll_count3: localStorage.getItem("poll_count3"),
+            data_poll_count4: localStorage.getItem("poll_count3"),
           };
 
           setDoc(voteRef, {
@@ -652,7 +652,7 @@ export default function Body() {
               poll_tab2: localStorage.getItem("poll_tab2"),
               poll_tab3: localStorage.getItem("poll_tab3"),
               poll_tab4: localStorage.getItem("poll_tab4"),
-              poll_count4: localStorage.getItem("poll_count4"),
+              data_poll_count4: localStorage.getItem("poll_count4"),
             };
 
             setDoc(voteRef, {
