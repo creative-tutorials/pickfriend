@@ -1,10 +1,18 @@
 body {
   padding: 0;
   margin: 0;
-  background: rgb(205, 219, 231);
+  background: rgb(242, 245, 247);
 }
 
 * {
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  background: #d6d6d6;
+}
+::-webkit-scrollbar-thumb {
+  background: #b5cfe7;
+  border-radius: 10px;
 }
