@@ -268,7 +268,19 @@ export default function Body() {
       const dragID2 = updatePollEl();
       const dragID3 = updatePollEl();
       const dragID4 = updatePollEl();
-      createEl.innerHTML += `<div class=${styles.post_board}>
+      createElement();
+      const getC = document.querySelector(`#${counterrand}`); // selecting the counter element
+      const pollPx = document.querySelector(`#${FirstpollValue}`);
+      const pollPx2 = document.querySelector(`#${SecondpollValue}`);
+      const pollPx3 = document.querySelector(`#${ThirdpollValue}`);
+      const pollPx4 = document.querySelector(`#${FourthpollValue}`);
+      const pollDrag = document.querySelector(`#${dragID}`);
+      const pollDrag2 = document.querySelector(`#${dragID2}`);
+      const pollDrag3 = document.querySelector(`#${dragID3}`);
+      const pollDrag4 = document.querySelector(`#${dragID4}`);
+
+      function createElement() {
+        createEl.innerHTML += `<div class=${styles.post_board}>
           <div class=${styles.post_board_content}>
             <div class=${styles.pst_left}>
               <div class=${styles.upvote} id=${upvoterand}>
@@ -309,42 +321,42 @@ export default function Body() {
                   <div class=${styles.polls_context_menu}>
                     <div class=${styles.poll_context} id=${randomPollNumb}>
                       <div class=${styles.poll_menu_text}>${
-        doc.data().data.poll_tab
-      }</div>
+          doc.data().data.poll_tab
+        }</div>
                       <div class=${styles.poll_numb_tab} id=${FirstpollValue}>${
-        doc.data().data.poll_count
-      }</div>
+          doc.data().data.poll_count
+        }</div>
                       <div class=${styles.poll_drag} id=${dragID}></div>
                     </div>
                     <div class=${styles.poll_context} id=${randomPollNumb2}>
                       <div class=${styles.poll_menu_text}>${
-        doc.data().data.poll_tab2
-      }</div>
+          doc.data().data.poll_tab2
+        }</div>
                       <div class=${
                         styles.poll_numb_tab
                       } id=${SecondpollValue}>${
-        doc.data().data.poll_count2
-      }</div>
+          doc.data().data.poll_count
+        }</div>
                       <div class=${styles.poll_drag} id=${dragID2}></div>
                     </div>
                     <div class=${styles.poll_context} id=${randomPollNumb3}>
                       <div class=${styles.poll_menu_text}>${
-        doc.data().data.poll_tab3
-      }</div>
+          doc.data().data.poll_tab3
+        }</div>
                       <div class=${styles.poll_numb_tab} id=${ThirdpollValue}>${
-        doc.data().data.poll_count3
-      }</div>
+          doc.data().data.poll_count
+        }</div>
                       <div class=${styles.poll_drag} id=${dragID3}></div>
                     </div>
                     <div class=${styles.poll_context} id=${randomPollNumb4}>
                       <div class=${styles.poll_menu_text}>${
-        doc.data().data.poll_tab4
-      }</div>
+          doc.data().data.poll_tab4
+        }</div>
                       <div class=${
                         styles.poll_numb_tab
                       } id=${FourthpollValue}>${
-        doc.data().data.poll_count4
-      }</div>
+          doc.data().data.poll_count4
+        }</div>
                       <div class=${styles.poll_drag} id=${dragID4}></div>
                     </div>
                   </div>
@@ -367,15 +379,7 @@ export default function Body() {
             </div>
           </div>
         </div>`;
-      const getC = document.querySelector(`#${counterrand}`); // selecting the counter element
-      const pollPx = document.querySelector(`#${FirstpollValue}`);
-      const pollPx2 = document.querySelector(`#${SecondpollValue}`);
-      const pollPx3 = document.querySelector(`#${ThirdpollValue}`);
-      const pollPx4 = document.querySelector(`#${FourthpollValue}`);
-      const pollDrag = document.querySelector(`#${dragID}`);
-      const pollDrag2 = document.querySelector(`#${dragID2}`);
-      const pollDrag3 = document.querySelector(`#${dragID3}`);
-      const pollDrag4 = document.querySelector(`#${dragID4}`);
+      }
 
       function updatePollEl() {
         const dragID = "";
@@ -456,7 +460,6 @@ export default function Body() {
         }
       }
       function updatePoll() {
-
         const updateFirstPoll = () => {
           poll_count = poll_count * 2;
           pollPx.innerText = poll_count + "%";
@@ -508,10 +511,10 @@ export default function Body() {
         };
 
         const updateSecondPoll = () => {
-          poll_count2 = poll_count2 * 2;
-          pollPx2.innerText = poll_count2 + "%";
-          localStorage.setItem("poll_count2", poll_count2 + "%");
-          pollDrag2.style.width = poll_count2 + "%";
+          poll_count = poll_count * 2;
+          pollPx2.innerText = poll_count + "%";
+          localStorage.setItem("poll_count2", poll_count + "%");
+          pollDrag2.style.width = poll_count + "%";
 
           const pollid =
             Math.random().toString(36).substring(2, 15) +
@@ -537,11 +540,11 @@ export default function Body() {
             );
           }, 1000);
 
-          if (poll_count2 > 100) {
-            poll_count2 = 100;
-            pollPx2.innerText = poll_count2 + "%";
-            localStorage.setItem("poll_count2", poll_count2 + "%");
-            pollDrag2.style.width = poll_count2 + "%";
+          if (poll_count > 100) {
+            poll_count = 100;
+            pollPx2.innerText = poll_count + "%";
+            localStorage.setItem("poll_count2", poll_count + "%");
+            pollDrag2.style.width = poll_count + "%";
 
             const getLocalStorageItems = {
               title: localStorage.getItem("poll_title"),
@@ -559,10 +562,10 @@ export default function Body() {
         };
 
         const updateThirdPoll = () => {
-          poll_count3 = poll_count3 * 2;
-          pollPx3.innerText = poll_count3 + "%";
-          localStorage.setItem("poll_count3", poll_count3 + "%");
-          pollDrag3.style.width = poll_count3 + "%";
+          poll_count = poll_count * 2;
+          pollPx3.innerText = poll_count + "%";
+          localStorage.setItem("poll_count3", poll_count + "%");
+          pollDrag3.style.width = poll_count + "%";
 
           const pollid =
             Math.random().toString(36).substring(2, 15) +
@@ -588,11 +591,11 @@ export default function Body() {
             );
           }, 1000);
 
-          if (poll_count3 > 100) {
-            poll_count3 = 100;
-            pollPx3.innerText = poll_count3 + "%";
-            localStorage.setItem("poll_count3", poll_count3 + "%");
-            pollDrag3.style.width = poll_count3 + "%";
+          if (poll_count > 100) {
+            poll_count = 100;
+            pollPx3.innerText = poll_count + "%";
+            localStorage.setItem("poll_count3", poll_count + "%");
+            pollDrag3.style.width = poll_count + "%";
 
             const getLocalStorageItems = {
               title: localStorage.getItem("poll_title"),
@@ -611,10 +614,10 @@ export default function Body() {
         };
 
         const updateFourthPoll = () => {
-          poll_count4 = poll_count4 * 2;
-          pollPx4.innerText = poll_count4 + "%";
-          localStorage.setItem("poll_count4", poll_count4 + "%");
-          pollDrag4.style.width = poll_count4 + "%";
+          poll_count = poll_count * 2;
+          pollPx4.innerText = poll_count + "%";
+          localStorage.setItem("poll_count4", poll_count + "%");
+          pollDrag4.style.width = poll_count + "%";
 
           const pollid =
             Math.random().toString(36).substring(2, 15) +
@@ -640,11 +643,11 @@ export default function Body() {
             );
           }, 1000);
 
-          if (poll_count4 > 100) {
-            poll_count4 = 100;
-            pollPx4.innerText = poll_count4 + "%";
-            localStorage.setItem("poll_count4", poll_count4 + "%");
-            pollDrag4.style.width = poll_count4 + "%";
+          if (poll_count > 100) {
+            poll_count = 100;
+            pollPx4.innerText = poll_count + "%";
+            localStorage.setItem("poll_count4", poll_count + "%");
+            pollDrag4.style.width = poll_count + "%";
 
             const getLocalStorageItems = {
               title: localStorage.getItem("poll_title"),
