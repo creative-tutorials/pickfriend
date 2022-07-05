@@ -41,7 +41,7 @@ Note that the CLI is not yet available for the browser. We will be adding it soo
 
 **Frontend**
 
-<img src="https://www.svgrepo.com/show/306460/nestjs.svg" width="80px" style="filter: invert(1)"></img>
+<img src="https://www.svgrepo.com/show/354112/nextjs.svg" width="80px" style="filter: invert(1)"></img>
 
 **Backend:**
 
