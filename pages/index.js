@@ -37,9 +37,7 @@ const db = getFirestore(app);
 export default function Home() {
   const [userStatus, setUserStatus] = useState(null);
   const header_user = useRef();
-  const popup = useRef();
-  const postBrd = useRef();
-  const pollpop = useRef();
+  const dropdwn = useRef();
   //
   const pollrefID = "ABCDEFGHIJKLMNOP";
   let captureID = "";
@@ -70,29 +68,27 @@ export default function Home() {
       setUserStatus(false);
     }
   };
+  const toogleClass = () => { //? toggle the dropdown class ====> show/hide
+    const dropdown = dropdwn.current;
+    dropdown.classList.toggle(`${styles.active}`);
+  };
 
-  
   //
   return (
     <div className={styles.container}>
-     <Header   header_user={header_user}  />
       {/*  */}
-      <PrimeEXBody />
-      {/* popup input box */}
-      <ModalBox />
-      {/* poll menu box */}
-      <PollBox />
-    </div>
-  );
-}
-
-    function Header({header_user}) {
-      return (<div className={styles.header}>
+      <div className={styles.header} header_user={header_user}>
         <div className={styles.logo}>
-          <Image src="/primeexlogo.png" alt="PrimeEx" width={100} height={100} style={{
-      borderRadius: "50%",
-      cursor: "pointer"
-    }} />
+          <Image
+            src="/primeexlogo.png"
+            alt="PrimeEx"
+            width={100}
+            height={100}
+            style={{
+              borderRadius: "50%",
+              cursor: "pointer",
+            }}
+          />
         </div>
         <div className={styles.nav_links}>
           <Link href="/">
@@ -117,15 +113,21 @@ export default function Home() {
           </Link>
         </div>
         <div className={styles.user_info}>
-          <div className={styles.user_info_icon}>
+          <div className={styles.user_info_icon} onClick={toogleClass}>
             <Image src="/favicon.ico" width={50} height={50} alt="userimage" />
           </div>
-          <div className={styles.dropdown}>
+          <div className={styles.dropdown} ref={dropdwn}>
             <div className={styles.settings}>
               <div className={styles.details}>
-                <Image src="/primeexlogo.png" width={40} height={40} alt="userimage" style={{
-            borderRadius: "50%"
-          }} />
+                <Image
+                  src="/primeexlogo.png"
+                  width={40}
+                  height={40}
+                  alt="userimage"
+                  style={{
+                    borderRadius: "50%",
+                  }}
+                />
                 <span ref={header_user}></span>
               </div>
               <div className={styles.cjx}>
@@ -147,6 +149,12 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>);
-    }
-  
+      </div>
+      <PrimeEXBody />
+      {/* popup input box */}
+      <ModalBox />
+      {/* poll menu box */}
+      <PollBox />
+    </div>
+  );
+}
