@@ -1,9 +1,9 @@
-# PrimeEX Media📸
+# PickFriend 📸
 
 ![App Screenshot](https://media4.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif?cid=ecf05e47zweq7cq4abk5hhlwj6eblsfy52xm7mug2ooaysdj&rid=giphy.gif&ct=g)
 
-PrimeEX is a social media web application that allows you to upload your favorite images, thoughts and inspirational quotes
-PrimeEX is a social media app that allows you to post your thoughts freely
+PickFriend is a social media web application that allows you to upload your favorite images, thoughts and inspirational quotes
+PickFriend is a social media app that allows you to post your thoughts freely
 
 ## Authors
 
@@ -15,22 +15,22 @@ Demo Coming Soon 🚀
 
 ## Feedback
 
-If you have any feedback, please reach out to us at [PrimeEXMedia](mailto:treasureedesemhen500@gmail.com)
+If you have any feedback, please reach out to us at [FYTEQ](mailto:treasureedesemhen500@gmail.com)
 
 ## Installation
 
-Install primeex with npm
+Install **PickFriend** with npm
 
 ```bash
-  npm install primeex
-  cd primeex
+  npm install pickiexoz
+  cd pickiexoz
 ```
 
-Install primeex with yarn
+Install **PickFriend** with yarn
 
 ```bash
-  yarn add primeex
-  cd primeex
+  yarn add pickiexoz
+  cd pickiexoz
 ```
 
 ```
@@ -61,16 +61,16 @@ To make app better we do optimize the app E.g. refactors, performance improvemen
 
 ## FAQ
 
-- **Question 1:** What is PrimeEX?
-- **Answer 1:** PrimeEX is a social media web application that allows you to upload your favorite images, thoughts and inspirational quotes
+- **Question 1:** What is PickFriend?
+- **Answer 1:** PickFriend is a social media web application that allows you to upload your favorite images, thoughts and inspirational quotes
 
-- **Question 2:** What can I do with PrimeEX?
+- **Question 2:** What can I do with PickFriend?
 
-- **Answer 2:** You can upload your images, thoughts and inspirational quotes to PrimeEX and share them with your friends.
+- **Answer 2:** You can upload your images, thoughts and inspirational quotes to PickFriend and share them with your friends.
 
-- **Question 3:** Is PrimeEX free?
+- **Question 3:** Is PickFriend free?
 
-- **Answer 3:** Yes, PrimeEX is free to use.
+- **Answer 3:** Yes, PickFriend is free to use.
 
 ## Privacy Policy
 
@@ -78,4 +78,4 @@ Our Privacy Policy states that we do not collect any sensitive information from 
 
 ## Copyright
 
-Copyright © 2020 PrimeEX Media. All rights reserved.
+Copyright © 2020 FYTEQ. All rights reserved.
