@@ -64,7 +64,7 @@ export default function Body() {
   };
 
   const getUserStatus = async () => {
-    const usr = localStorage.getItem("user_id");
+    const usr = localStorage.getItem("emailval");
     const getPostUser = post_user.current;
     if (usr) {
       console.log("user is logged in");
@@ -205,7 +205,20 @@ export default function Body() {
         // if the user is logged in
         console.log("usr => ", usr); // log the user details
         getuserhtml.forEach((element) => {
-          element.innerText = "usr"; // update the user name element
+          const q = query(
+            collection(db, "createdAccount"),
+            where("email", "==", localStorage.getItem("emailval"))
+          );
+    
+          const querySnapshot = getDocs(q);
+          querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+            element.innerHTML = doc.data().email;
+            // split element.innerHTML to get the first part of the email
+            const splitEmail = element.innerHTML.split("@");
+            element.innerHTML = splitEmail[0];
+          });
         });
       } else {
         // if the user is not logged in

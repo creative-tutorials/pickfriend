@@ -6,11 +6,10 @@ import BodyPage from "./components/body.jsx";
 import ModalBox from "./components/modal.jsx";
 import PollBox from "./components/pollbox.jsx";
 import {
-  doc,
-  setDoc,
-  getDocs,
   collection,
-  deleteDoc,
+  query,
+  where,
+  getDocs,
   getFirestore,
 } from "firebase/firestore";
 
@@ -54,12 +53,25 @@ export default function Home() {
   }, []);
 
   const getUserStatus = async () => {
-    const usr = localStorage.getItem("user_id");
+    const usr = localStorage.getItem("emailval");
     const getheaderUser = header_user.current;
     if (usr) {
       // alert("user is logged in");
       console.log("user is logged in");
-      getheaderUser.innerHTML = "user";
+      const q = query(
+        collection(db, "createdAccount"),
+        where("email", "==", localStorage.getItem("emailval"))
+      );
+
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
+        getheaderUser.innerHTML = doc.data().email;
+        // split getheaderUser.innerHTML to get the first part of the email
+        const splitEmail = getheaderUser.innerHTML.split("@");
+        getheaderUser.innerHTML = splitEmail[0];
+      });
       setUserStatus(true);
     } else {
       // alert("user is not logged in");
@@ -68,7 +80,8 @@ export default function Home() {
       setUserStatus(false);
     }
   };
-  const toogleClass = () => { //? toggle the dropdown class ====> show/hide
+  const toogleClass = () => {
+    //? toggle the dropdown class ====> show/hide
     const dropdown = dropdwn.current;
     dropdown.classList.toggle(`${styles.active}`);
   };
