@@ -17,23 +17,26 @@ export default function Mailfunction() {
       const temp = `Hello ${localStorage.getItem(
         "emailval"
       )} Thanks for signing up with pickfriends, to make your account more secure and unbreachable we suggest you adding a 2FA on your account right away. Or to enable it now click the link below. ${"http://localhost:3000/components/Auth/mail"}`;
+
       const options = {
         method: "POST",
         headers: {
           "content-type": "application/json",
           "X-RapidAPI-Key":
             "6a7231bb66msh88c54b17bf58fe3p12fd44jsn78f50e4bef59",
-          "X-RapidAPI-Host": "rapidprod-sendgrid-v1.p.rapidapi.com",
+          "X-RapidAPI-Host": "hourmailer.p.rapidapi.com",
         },
-        body: `{"personalizations":[{"to":[{"email":${localStorage.getItem(
-          "emailval"
-        )}}],"subject":"Welcome to PrickFreinds"}],"from":{"email":"info.techtimi@gmail.com"},"content":[{"type":"text/plain","value":"Hello, World!"}]}`,
+        body: `{"toAddress":"${localStorage.getItem("emailval")}","title":"Welcome to PickFriends","message":"${temp}"}`,
       };
 
-      fetch("https://rapidprod-sendgrid-v1.p.rapidapi.com/mail/send", options)
+      fetch("https://hourmailer.p.rapidapi.com/send", options)
         .then((response) => response.json())
         .then((response) => console.log(response))
         .catch((err) => console.error(err));
+
+      console.log(temp);
+      console.log("%cSUCCESS", "color: green", 200, "Email has been verified");
+      status_ref.current.innerHTML = "SUCCESS 200, Email has been verified";
     } else {
       console.log(
         "%cFAILED",
@@ -48,6 +51,8 @@ export default function Mailfunction() {
       status_ref.current.style.borderColor = "#f5c6cb";
     }
   };
+
+  
 
   return (
     <div
