@@ -29,7 +29,7 @@ export function Index({}) {
         <div className={cmnt.commnet_bottom}>
           <div className={cmnt.comment_post}>
             <div className={cmnt.comment_text}>
-              Building the next generation social network - PrimeEX PrimeEx is a
+              Building the next generation social network - PickFriend PickFriend is a
               social network that allows you to connect with people around the
               world, share your thoughts and ideas, and interact with other
               people.

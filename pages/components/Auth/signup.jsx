@@ -33,11 +33,13 @@ const SignUpPage = () => {
   const errorClass = useRef();
   const errorMsg = useRef();
   const eye_icon = useRef();
+  const notificationPop = useRef()
   const signUp = async (e) => {
     e.preventDefault();
     const email = emailInput.current.value;
     const password = passwordInput.current.value;
     const dobinputfield = DOBInput.current.value;
+    const notifypop = notificationPop.current;
     const err = errorClass.current;
     const msg = errorMsg.current;
     const today = new Date();
@@ -67,6 +69,16 @@ const SignUpPage = () => {
             // Signed in
             const user = userCredential.user;
             console.log(user);
+            // localStorage.setItem("loginstatus", true);
+            // if user is signed in, log the console
+
+            if (user) {
+              console.log("user is signed in");
+              localStorage.setItem("emailval", email);
+              notifypop.classList.add(`${sup.show}`);
+            } else {
+              console.log("user is not signed in");
+            }
             // ...
             const uuid = user.uid;
             const acceptUserLoginRequest = () => {
@@ -130,10 +142,10 @@ const SignUpPage = () => {
               width={100}
               height={100}
               objectFit="cover"
-              src={"/primeexlogo.png"}
-              alt="primeexlogo"
+              src={"/logo.png"}
+              alt="logo icon"
               placeholder="blur"
-              blurDataURL={"/primeexlogo.png"}
+              blurDataURL={"/logo.png"}
               style={{
                 borderRadius: "50%",
               }}
@@ -143,7 +155,7 @@ const SignUpPage = () => {
             Sign Up <i className="fa-solid fa-clipboard-check"></i>
           </div>
           <div className={sup.SignUpDescriptionText}>
-            <p>SignUp Now and become a member of PrimeEx.</p>
+            <p>SignUp Now and become a member of PickFriend.</p>
           </div>
         </div>
         <div className={sup.SignupBody}>
@@ -188,6 +200,15 @@ const SignUpPage = () => {
               </Link>
             </div>
           </div>
+        </div>
+      </div>
+      <div className={sup.notificationPop} ref={notificationPop}>
+        <div className={sup.notifyText}>
+          Account Created Successfully click <br />
+          <Link href="/components/mail/mail">
+            <a>Verify</a>
+          </Link>
+          to verify your mail
         </div>
       </div>
       <Form_error errorClass={errorClass} errorMsg={errorMsg} />

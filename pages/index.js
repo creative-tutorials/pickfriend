@@ -2,7 +2,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
-import PrimeEXBody from "./components/body.jsx";
+import BodyPage from "./components/body.jsx";
 import ModalBox from "./components/modal.jsx";
 import PollBox from "./components/pollbox.jsx";
 import {
@@ -80,8 +80,8 @@ export default function Home() {
       <div className={styles.header} header_user={header_user}>
         <div className={styles.logo}>
           <Image
-            src="/primeexlogo.png"
-            alt="PrimeEx"
+            src="/logo.png"
+            alt="pickieimage"
             width={100}
             height={100}
             style={{
@@ -98,7 +98,7 @@ export default function Home() {
           </Link>
         </div>
         <div className={styles.search}>
-          <input type="text" placeholder="Search PrimeEX" />
+          <input type="text" placeholder="Search PickFriend" />
         </div>
         <div className={styles.action_links}>
           <Link href="/chat">
@@ -120,7 +120,7 @@ export default function Home() {
             <div className={styles.settings}>
               <div className={styles.details}>
                 <Image
-                  src="/primeexlogo.png"
+                  src="/logo.png"
                   width={40}
                   height={40}
                   alt="userimage"
@@ -150,7 +150,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <PrimeEXBody />
+      <BodyPage />
       {/* popup input box */}
       <ModalBox />
       {/* poll menu box */}

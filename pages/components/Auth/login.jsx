@@ -1,7 +1,6 @@
 import { Form_error } from "../error/form_error";
 import { GoogleSignIn } from "./googleSignIn";
 import lgn from "../../../styles/login.module.css";
-import sup from "../../../styles/signup.module.css";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import Link from "next/link";
@@ -111,10 +110,10 @@ const LoginPage = () => {
               width={100}
               height={100}
               objectFit="cover"
-              src={"/primeexlogo.png"}
-              alt="primeexlogo"
+              src={"/logo.png"}
+              alt="logo icon"
               placeholder="blur"
-              blurDataURL={"/primeexlogo.png"}
+              blurDataURL={"/logo.png"}
               style={{
                 borderRadius: "50%",
               }}
@@ -124,7 +123,7 @@ const LoginPage = () => {
             Sign In <i className="fa-solid fa-key"></i>
           </div>
           <div className={lgn.LoginDescriptionText}>
-            <p>SignIn Now and continue with PrimeEx.</p>
+            <p>SignIn Now and continue with PickFriend.</p>
           </div>
         </div>
         <div className={lgn.LoginBoxBody}>

@@ -40,7 +40,7 @@ export function Post2({
             </div>
             <div className={styles.pst_right_bottom}>
               <div className={styles.pst_right_bottom_text}>
-                <span>This is me testing the new PrimeEx Poll feature.</span>
+                <span>This is me testing the new PickFriend Poll feature.</span>
                 <div className={styles.polls_context_menu}>
                   <div className={styles.poll_context}>
                     <div className={styles.poll_menu_text}>Option A</div>

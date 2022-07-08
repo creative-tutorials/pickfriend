@@ -10,10 +10,10 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <title>PrimeEx - The new social media platform</title>
+        <title>PickFriend - Find Friends and Connect</title>
         <Head>
-          <meta name="description" content="New and Improved Social Media Platform" />
-          <link rel="icon" href="/favicon.ico" />
+          <meta name="description" content="PickFriend - Find Friends and Connect" />
+          <link rel="icon" href="/favicon2.ico" />
           <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta3/css/all.css" />
         </Head>
         <body>

@@ -783,7 +783,7 @@ export default function Body() {
     // += is used to append the content to the existing content
   };
   return (
-    <div className={styles.primeex_body} ref={postBrd}>
+    <div className={styles.mains_body} ref={postBrd}>
       <div className={styles.post_div}>
         <div className={styles.pst_left}>
           <Image src="/favicon.ico" width={30} height={30} alt="userimage" />

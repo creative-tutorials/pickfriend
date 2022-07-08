@@ -123,11 +123,11 @@
   margin-right: 5px;
 }
 /* header ends */
-.primeex_body {
+.mains_body {
   width: 100%;
   padding: 30px 60px;
 }
-.primeex_body .post_div {
+.mains_body .post_div {
   width: 100%;
   background: var(--white-bg);
   padding: 20px;
@@ -139,10 +139,10 @@
   margin-top: 100px;
   box-shadow: var(--box-shadow);
 }
-.primeex_body .post_div .pst_right {
+.mains_body .post_div .pst_right {
   width: 100%;
 }
-.primeex_body .post_div .pst_right input {
+.mains_body .post_div .pst_right input {
   width: 100%;
   padding: 13px 30px;
   /* height: 40px; */
@@ -154,16 +154,16 @@
   color: var(--input-color);
   outline: none;
 }
-.primeex_body .post_div .pst_upload .image_upload i {
+.mains_body .post_div .pst_upload .image_upload i {
   font-size: 1.5rem;
   color: #444;
   margin-left: 10px;
   cursor: pointer;
 }
-.primeex_body .post_div .pst_left {
+.mains_body .post_div .pst_left {
   margin-right: 10px;
 }
-.primeex_body .post_board {
+.mains_body .post_board {
   width: 100%;
   background: var(--white-bg);
   padding: 30px;
@@ -172,7 +172,7 @@
   position: relative;
   box-shadow: var(--box-shadow2);
 }
-.primeex_body .post_board .post_board_content .pst_left {
+.mains_body .post_board .post_board_content .pst_left {
   position: absolute;
   top: 0;
   left: 0;
@@ -186,21 +186,21 @@
   justify-content: center;
   flex-direction: column;
 }
-.primeex_body .post_board .post_board_content .pst_left i {
+.mains_body .post_board .post_board_content .pst_left i {
   font-size: 2rem;
   color: #eeeef0;
   margin-left: 10px;
   cursor: pointer;
 }
-.primeex_body .post_board .post_board_content .pst_left .count {
+.mains_body .post_board .post_board_content .pst_left .count {
   font-size: 1.5rem;
   color: #eeeef0;
   margin-left: 10px;
 }
-.primeex_body .post_board .post_board_content .pst_right {
+.mains_body .post_board .post_board_content .pst_right {
   margin-left: 80px;
 }
-.primeex_body
+.mains_body
   .post_board
   .post_board_content
   .pst_right
@@ -209,7 +209,7 @@
   display: flex;
   align-items: center;
 }
-.primeex_body
+.mains_body
   .post_board
   .post_board_content
   .pst_right
@@ -220,7 +220,7 @@
   font-size: 1.2rem;
   margin-left: 5px;
 }
-.primeex_body
+.mains_body
   .post_board
   .post_board_content
   .pst_right
@@ -231,10 +231,10 @@
   color: #232323;
   margin-left: 5px;
 }
-.primeex_body .post_board .post_board_content .pst_right .pst_right_bottom {
+.mains_body .post_board .post_board_content .pst_right .pst_right_bottom {
   margin-top: 10px;
 }
-.primeex_body
+.mains_body
   .post_board
   .post_board_content
   .pst_right
@@ -243,7 +243,7 @@
   span {
   font-size: 1.2rem;
 }
-.primeex_body
+.mains_body
   .post_board
   .post_board_content
   .pst_right
@@ -256,7 +256,7 @@
   width: 100%;
   text-align: center;
 }
-.primeex_body
+.mains_body
   .post_board
   .post_board_content
   .pst_right
@@ -264,7 +264,7 @@
   .pst_right_bottom_icon
   .comment_icon
   i,
-.primeex_body
+.mains_body
   .post_board
   .post_board_content
   .pst_right
@@ -272,7 +272,7 @@
   .pst_right_bottom_icon
   .share_icon
   i,
-.primeex_body
+.mains_body
   .post_board
   .post_board_content
   .pst_right
@@ -280,7 +280,7 @@
   .pst_right_bottom_icon
   .save_icon
   i,
-.primeex_body
+.mains_body
   .post_board
   .post_board_content
   .pst_right
@@ -298,7 +298,7 @@
   cursor: pointer;
   transition: 0.3s ease;
 }
-.primeex_body
+.mains_body
   .post_board
   .post_board_content
   .pst_right
@@ -306,28 +306,28 @@
   .pst_right_bottom_icon i:hover {
   background: #5A91C6;
   }
-.primeex_body
+.mains_body
   .post_board
   .post_board_content
   .pst_right
   .pst_right_bottom
   .pst_right_bottom_icon
   .comment_icon,
-.primeex_body
+.mains_body
   .post_board
   .post_board_content
   .pst_right
   .pst_right_bottom
   .pst_right_bottom_icon
   .share_icon,
-.primeex_body
+.mains_body
   .post_board
   .post_board_content
   .pst_right
   .pst_right_bottom
   .pst_right_bottom_icon
   .save_icon,
-.primeex_body
+.mains_body
   .post_board
   .post_board_content
   .pst_right
@@ -473,7 +473,7 @@
 }
 
 @media screen and (max-width: 850px) {
-  .primeex_body
+  .mains_body
     .post_board
     .post_board_content
     .pst_right

@@ -41,7 +41,7 @@ export function Post({
             <div className={styles.pst_right_bottom}>
               <div className={styles.pst_right_bottom_text}>
                 <span>
-                  Building the next generation social network - PrimeEX PrimeEx
+                  Building the next generation social network - PickFriend PickFriend
                   is a social network that allows you to connect with people
                   around the world, share your thoughts and ideas, and interact
                   with other people.
