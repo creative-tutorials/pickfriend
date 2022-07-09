@@ -79,3 +79,8 @@ Our Privacy Policy states that we do not collect any sensitive information from 
 ## Copyright
 
 Copyright © 2020 FYTEQ. All rights reserved.
+
+
+## Built with
+
+[Next.js by **Vercel**](https://nextjs.org)
