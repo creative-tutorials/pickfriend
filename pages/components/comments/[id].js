@@ -3,9 +3,31 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import cmnt from "../../../styles/comments.module.css";
 import avatar from "../../../avatar/student.jpeg";
+import { initializeApp } from "firebase/app";
+import { doc, setDoc, getFirestore } from "firebase/firestore";
+//
+
+// Your web app's Firebase configuration
+//
+const firebaseConfig = {
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
 export default function Comments() {
   const [uuid, setuuid] = useState();
-  const [comments, setcomments] = useState();
+  const [comments, setcomments] = useState([
+    "beta app running on version 1.0.0",
+  ]);
   const readComment = useRef();
   useEffect(() => {
     // first
@@ -31,7 +53,7 @@ export default function Comments() {
   };
 
   // get the comments
-  const postComment = (e) => {
+  const postComment = async (e) => {
     const getCommentVal = readComment.current.value;
     if (getCommentVal) {
       //? if the commentInputValue is not empty
@@ -40,14 +62,44 @@ export default function Comments() {
       // clear the input
       readComment.current.value = "";
 
-      console.log("comments => ", comments);
+      console.log(
+        "%c🧪comments => ",
+        "color: #ff5733; font-weight: 500;",
+        comments
+      );
 
-      console.log("comment val => ", getCommentVal);
+      // console log the last array item
+      console.log(
+        "%c🧪comments => ",
+        "color: #ff5733; font-weight: 500;",
+        comments[comments.length - 1]
+      );
+
+      // Add a new document in collection "cities"
+      await addDocToDatabase();
 
       localStorage.setItem("commentAllowed", true);
     } else {
       localStorage.setItem("commentAllowed", false);
       alert("Please enter a comment");
+    }
+
+    // create a comment id
+    async function addDocToDatabase() {
+      const last_array_item = comments[comments.length - 1];
+      const commentID = "ABCDEFGHIJKLMNOPQRSTUVWXYZ$@#1234";
+      let captureID = "";
+      for (let i = 0; i < 6; i++) {
+        captureID += commentID.charAt(
+          Math.floor(Math.random() * commentID.length)
+        );
+      }
+      await setDoc(doc(db, "commentRef", captureID), {
+        id: captureID,
+        comment: last_array_item,
+        commentdate: new Date().toLocaleString(),
+        // tags: ["👩‍💻", "💡", "🧪"],
+      });
     }
   };
 
