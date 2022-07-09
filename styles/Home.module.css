@@ -208,6 +208,7 @@
   .usr_post {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 .mains_body
   .post_board
@@ -537,11 +538,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   position: relative;
   cursor: pointer;
 }
 .polls_context_menu .poll_drag {
-  width: 5%;
+  width: 0;
   height: 100%;
   background: rgb(190, 189, 189);
   opacity: 0.5;
