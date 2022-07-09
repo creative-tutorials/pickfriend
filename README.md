@@ -41,11 +41,11 @@ Note that the CLI is not yet available for the browser. We will be adding it soo
 
 **Frontend**
 
-<img src="https://www.svgrepo.com/show/354112/nextjs.svg" width="80px" style="filter: invert(1)"></img>
+![NextJs](https://www.svgrepo.com/show/354112/nextjs.svg)
 
 **Backend:**
 
-<img src="https://www.svgrepo.com/show/353735/firebase.svg" width="80px"></img>
+![Firebase](https://www.svgrepo.com/show/353735/firebase.svg)
 
 ## Screenshots
 
