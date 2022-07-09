@@ -50,7 +50,7 @@ const SignUpPage = () => {
       if (age < 18) {
         // ...? if age is less than 18
         err.classList.add(`${lgn.show}`);
-        msg.innerHTML = `You are not 18 years old.`;
+        msg.innerText = `You are not 18 years old.`;
         setTimeout(() => {
           err.classList.remove(`${lgn.show}`);
         }, 5000);
