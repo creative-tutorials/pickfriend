@@ -78,7 +78,7 @@ Our Privacy Policy states that we do not collect any sensitive information from 
 
 ## Copyright
 
-Copyright © 2020 FYTEQ. All rights reserved.
+Copyright © 2020 Pick. All rights reserved.
 
 
 ## Built with
