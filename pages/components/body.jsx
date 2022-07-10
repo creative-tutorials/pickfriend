@@ -1,5 +1,5 @@
-import { Post2 } from "./post2";
-import { Post } from "./post";
+import { Post2 } from "./post/post2";
+import { Post } from "./post/post";
 import Image from "next/image";
 import styles from "../../styles/Home.module.css";
 import { useRef, useEffect } from "react";
@@ -8,6 +8,8 @@ import {
   setDoc,
   getDocs,
   collection,
+  query,
+  where,
   deleteDoc,
   getFirestore,
 } from "firebase/firestore";
@@ -66,12 +68,19 @@ export default function Body() {
   const getUserStatus = async () => {
     const usr = localStorage.getItem("emailval");
     const getPostUser = post_user.current;
+    const random_user_name = ""
+    const char = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+    for (let i = 0; i < 10; i++) {
+      random_user_name += char.charAt(Math.floor(Math.random() * char.length));
+    }
+
     if (usr) {
       console.log("user is logged in");
-      getPostUser.innerHTML = "user";
+      getPostUser.innerHTML = random_user_name;
     } else {
       console.log("user is not logged in");
-      getPostUser.innerHTML = "null";
+      getPostUser.innerHTML = "guest";
     }
   };
 
@@ -81,7 +90,7 @@ export default function Body() {
   };
   const getPosts = async () => {
     const getpostBrd = postBrd.current;
-    const usr = localStorage.getItem("user_id");
+    const usr = localStorage.getItem("emailval");
     const querySnapshot = await getDocs(collection(db, "postRef"));
     querySnapshot.forEach((doc) => {
       const createEl = document.createElement("div");
@@ -91,7 +100,6 @@ export default function Body() {
       getpostBrd.appendChild(createEl);
       //
       //
-      const counter2 = 0; // counter for upvote and downvote
       //* generate radom post id
       let char = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       let upvoterand = "";
@@ -108,17 +116,6 @@ export default function Body() {
       }
       createEl.innerHTML += `<div class=${styles.post_board}>
           <div class=${styles.post_board_content}>
-            <div class=${styles.pst_left}>
-              <div class=${styles.upvote} id=${upvoterand}>
-                <i class="fa-light fa-up"></i>
-              </div>
-              <div class=${styles.count} id=${counterrand}>
-                ${counter2}
-              </div>
-              <div class=${styles.downvote} id=${downvoterand}>
-                <i class="fa-light fa-down"></i>
-              </div>
-            </div>
             <div class=${styles.pst_right}>
               <div class=${styles.pst_right_top}>
                 <div class=${styles.usr_post}>
@@ -161,8 +158,8 @@ export default function Body() {
                     <i class="fa-regular fa-bookmark"></i>
                   </div>
     
-                  <div class=${styles.sponsor_icon}>
-                    <i class="fa-regular fa-user-plus"></i>
+                  <div class=${styles.repost_icon}>
+                  <i class="fa-solid fa-rotate-right"></i>
                   </div>
                 </div>
               </div>
@@ -170,63 +167,6 @@ export default function Body() {
           </div>
         </div>
         `;
-      const getC = document.querySelector(`#${counterrand}`); // selecting the counter element
-      function upvote() {
-        counter++; // incrementing the counter
-        getC.innerText = counter; // updating the counter element
-        if (counter > 5) {
-          // if the counter is greater than 5
-          alert("you cant like more than 5"); // alert the user
-          counter = 5; // set the counter to 5
-        }
-      }
-      function downvote() {
-        counter--; // decrementing the counter
-        getC.innerText = counter; // updating the counter element
-        if (counter < 1) {
-          // if the counter is less than 1
-          counter = 0; // set the counter to 0
-          getC.innerText = counter; // update the counter element
-          //
-        }
-      }
-      const upv = document.querySelector(`#${upvoterand}`); // selecting the upvote element
-      upv.onclick = () => {
-        // if the upvote element is clicked
-        upvote(); // call the upvote function
-      };
-      const downv = document.querySelector(`#${downvoterand}`); // selecting the downvote element
-      downv.onclick = () => {
-        // if the downvote element is clicked
-        downvote(); // call the downvote function
-      };
-      const getuserhtml = document.querySelectorAll("#getuserhtml"); // selecting the user name element. *using querySelectorAll because the user name is generated dynamically
-      if (usr) {
-        // if the user is logged in
-        console.log("usr => ", usr); // log the user details
-        getuserhtml.forEach((element) => {
-          const q = query(
-            collection(db, "createdAccount"),
-            where("email", "==", localStorage.getItem("emailval"))
-          );
-    
-          const querySnapshot = getDocs(q);
-          querySnapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
-            console.log(doc.id, " => ", doc.data());
-            element.innerHTML = doc.data().email;
-            // split element.innerHTML to get the first part of the email
-            const splitEmail = element.innerHTML.split("@");
-            element.innerHTML = splitEmail[0];
-          });
-        });
-      } else {
-        // if the user is not logged in
-        console.log("no usr");
-        getuserhtml.forEach((element) => {
-          element.innerText = "guest"; // update the user name element
-        });
-      }
     });
     // *
     const querySnapshot2 = await getDocs(collection(db, "pollRef"));
@@ -238,11 +178,7 @@ export default function Body() {
       getpostBrd.appendChild(createEl);
       //
       //
-      const counter2 = 0; // counter for upvote and downvote
       const poll_count = 5; //
-      const poll_count2 = 5; //
-      const poll_count3 = 5; //
-      const poll_count4 = 5; //
       //* generate radom post id
       let char = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       let upvoterand = "";
@@ -295,17 +231,6 @@ export default function Body() {
       function createElement() {
         createEl.innerHTML += `<div class=${styles.post_board}>
           <div class=${styles.post_board_content}>
-            <div class=${styles.pst_left}>
-              <div class=${styles.upvote} id=${upvoterand}>
-                <i class="fa-light fa-up"></i>
-              </div>
-              <div class=${styles.count} id=${counterrand}>
-                ${counter2}
-              </div>
-              <div class={styles.downvote} id=${downvoterand}>
-                <i class="fa-light fa-down"></i>
-              </div>
-            </div>
             <div class=${styles.pst_right}>
               <div class=${styles.pst_right_top}>
                 <div class=${styles.usr_post}>
@@ -384,8 +309,8 @@ export default function Body() {
                   <div class=${styles.save_icon}>
                     <i class="fa-regular fa-bookmark"></i>
                   </div>
-                  <div class=${styles.sponsor_icon}>
-                    <i class="fa-regular fa-user-plus"></i>
+                  <div class=${styles.repost_icon}>
+                  <i class="fa-solid fa-rotate-right"></i>
                   </div>
                 </div>
               </div>
@@ -451,26 +376,6 @@ export default function Body() {
           );
         }
         return randomPollNumb;
-      }
-
-      function upvote() {
-        counter++; // incrementing the counter
-        getC.innerText = counter; // updating the counter element
-        if (counter > 5) {
-          // if the counter is greater than 5
-          alert("you cant like more than 5"); // alert the user
-          counter = 5; // set the counter to 5
-        }
-      }
-      function downvote() {
-        counter--; // decrementing the counter
-        getC.innerText = counter; // updating the counter element
-        if (counter < 1) {
-          // if the counter is less than 1
-          counter = 0; // set the counter to 0
-          getC.innerText = counter; // update the counter element
-          //
-        }
       }
       function updatePoll() {
         const updateFirstPoll = () => {
@@ -682,15 +587,6 @@ export default function Body() {
         updateThirdPoll();
         updateFourthPoll();
       }
-
-      const upv = document.querySelector(`#${upvoterand}`); // selecting the upvote element
-      upv.onclick = () => {
-        upvote(); // call the upvote function
-      };
-      const downv = document.querySelector(`#${downvoterand}`); // selecting the downvote element
-      downv.onclick = () => {
-        downvote(); // call the downvote function
-      };
       const pollCaller = document.querySelector(`#${randomPollNumb}`); // selecting the poll tab element
       const pollCaller2 = document.querySelector(`#${randomPollNumb2}`); // selecting the poll tab element
       const pollCaller3 = document.querySelector(`#${randomPollNumb3}`); // selecting the poll tab element
