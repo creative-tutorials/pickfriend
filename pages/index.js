@@ -70,7 +70,11 @@ export default function Home() {
         getheaderUser.innerHTML = doc.data().email;
         // split getheaderUser.innerHTML to get the first part of the email
         const splitEmail = getheaderUser.innerHTML.split("@");
-        getheaderUser.innerHTML = splitEmail[0];
+
+        // if email length is greater than 10 then truncate the email
+        if (splitEmail[0].length > 10) {
+          getheaderUser.innerHTML = splitEmail[0].substring(0, 10);
+        }
       });
       setUserStatus(true);
     } else {
