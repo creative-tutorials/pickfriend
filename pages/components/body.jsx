@@ -1,3 +1,4 @@
+import { ImagePost } from './post/imagePost';
 import { Post2 } from "./post/post2";
 import { Post } from "./post/post";
 import Image from "next/image";
@@ -71,6 +72,10 @@ export default function Body() {
   const showPopup = () => {
     // local
     localStorage.setItem("popup", true);
+
+    setTimeout(() => {
+      location.reload();
+    }, 3000);
   };
   const getPosts = async () => {
     const getpostBrd = postBrd.current;
@@ -104,6 +109,7 @@ export default function Body() {
             type="file"
             placeholder="Upload Image"
             id="file"
+            accept={"image/jpg, image/png, image/jpeg, image/gif, video/mp4"}
             hidden
             onChange={(event) => {
               // convert file to reader
@@ -139,7 +145,7 @@ export default function Body() {
       </div>
       <Post post_user={post_user} />
       <Post2 post_user={post_user} />
+      <ImagePost     />
     </div>
   );
 }
-
