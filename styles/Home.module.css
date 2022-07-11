@@ -286,19 +286,6 @@
 .input_box .tabs .tab i {
   margin-right: 5px;
 }
-.input_box .titleInput {
-  margin-top: 20px;
-  width: 100%;
-}
-.input_box .titleInput input {
-  width: 100%;
-  padding: 15px 30px;
-  background: #f7f7f7;
-  font-size: 1.2rem;
-  border: none;
-  outline: none;
-  border-radius: 5px;
-}
 .input_box .textInput .textEdit {
   display: flex;
   align-items: center;
