@@ -1,10 +1,6 @@
 import { useRef, useEffect } from "react";
 import styles from "../../styles/Home.module.css";
-import {
-  doc,
-  setDoc,
-  getFirestore,
-} from "firebase/firestore";
+import { doc, setDoc, getFirestore } from "firebase/firestore";
 
 //
 import { initializeApp } from "firebase/app";
@@ -26,10 +22,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-
 export default function PopUp() {
   const popup = useRef();
-  const titleblock = useRef();
   const textblock = useRef();
   const closeicon = useRef();
   const postbutton = useRef();
@@ -59,6 +53,10 @@ export default function PopUp() {
   const showPollMenu = () => {
     localStorage.setItem("pollC", true);
     localStorage.setItem("popup", false);
+
+    setTimeout(() => {
+      location.reload();
+    }, 3000);
   };
 
   const getLocalStorageData = () => {
@@ -79,19 +77,18 @@ export default function PopUp() {
 
   const postcontent = () => {
     const retrTextblock = textblock.current.value;
-    const retrTitleblock = titleblock.current.value;
     const retrpostbutton = postbutton.current;
 
-    if (retrTextblock === "" || retrTitleblock === "") {
+    if (retrTextblock === "") {
       alert("please fill in all fields");
     } else {
       // random post sting id
+      alert("posting...");
       const postid =
         Math.random().toString(36).substring(2, 15) +
         Math.random().toString(36).substring(2, 15);
       const cityRef = doc(db, "postRef", postid);
       let post = {
-        title: retrTitleblock,
         text: retrTextblock,
       };
       setDoc(cityRef, { data: post });
@@ -113,14 +110,6 @@ export default function PopUp() {
           <span>Poll</span>
         </div>
       </div>
-      <div className={styles.titleInput}>
-        <input
-          type="text"
-          placeholder="Title"
-          maxLength={300}
-          ref={titleblock}
-        />
-      </div>
       <div className={styles.textInput}>
         <div className={styles.textEdit}>
           <div className={styles.icon}>
@@ -140,7 +129,7 @@ export default function PopUp() {
           </div>
         </div>
         <textarea
-          placeholder="Write your post here..."
+          placeholder="What you Picking?"
           ref={textblock}
         ></textarea>
       </div>
