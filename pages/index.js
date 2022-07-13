@@ -1,3 +1,4 @@
+import { Header } from './components/Header/Header';
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
@@ -43,7 +44,6 @@ export default function Home() {
   for (let i = 0; i < 6; i++) {
     captureID += pollrefID.charAt(Math.floor(Math.random() * pollrefID.length));
   }
-  console.log("CaptureID => ", captureID);
   useEffect(() => {
     //
 
@@ -94,79 +94,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       {/*  */}
-      <div className={styles.header} header_user={header_user}>
-        <div className={styles.logo}>
-          <Image
-            src="/logo.png"
-            alt="pickieimage"
-            width={100}
-            height={100}
-            style={{
-              borderRadius: "50%",
-              cursor: "pointer",
-            }}
-          />
-        </div>
-        <div className={styles.nav_links}>
-          <Link href="/">
-            <a>
-              <i className="fa-solid fa-house"></i>
-            </a>
-          </Link>
-        </div>
-        <div className={styles.search}>
-          <input type="text" placeholder="Search PickFriend" />
-        </div>
-        <div className={styles.action_links}>
-          <Link href="/chat">
-            <a>
-              <i className="fa-regular fa-comment-dots"></i>
-            </a>
-          </Link>
-          <Link href="/notification">
-            <a>
-              <i className="fa-regular fa-bell"></i>
-            </a>
-          </Link>
-        </div>
-        <div className={styles.user_info}>
-          <div className={styles.user_info_icon} onClick={toogleClass}>
-            <Image src="/favicon.ico" width={50} height={50} alt="userimage" />
-          </div>
-          <div className={styles.dropdown} ref={dropdwn}>
-            <div className={styles.settings}>
-              <div className={styles.details}>
-                <Image
-                  src="/logo.png"
-                  width={40}
-                  height={40}
-                  alt="userimage"
-                  style={{
-                    borderRadius: "50%",
-                  }}
-                />
-                <span ref={header_user}></span>
-              </div>
-              <div className={styles.cjx}>
-                <i className="fa-solid fa-gear"></i>
-                <p>Settings</p>
-              </div>
-              <div className={styles.cjx}>
-                <i className="fa-solid fa-circle-question"></i>
-                <p>Help</p>
-              </div>
-              <div className={styles.cjx}>
-                <i className="fa-solid fa-universal-access"></i>
-                <p>Accessibility</p>
-              </div>
-              <div className={styles.cjx}>
-                <i className="fa-solid fa-arrow-right-from-bracket"></i>
-                <p>Log Out</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Header   header_user={header_user} toogleClass={toogleClass} dropdwn={dropdwn}  />
       <BodyPage />
       {/* popup input box */}
       <ModalBox />
