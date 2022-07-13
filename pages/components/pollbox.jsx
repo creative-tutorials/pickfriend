@@ -1,10 +1,6 @@
 import styles from "../../styles/Home.module.css";
 import { useRef, useEffect } from "react";
-import {
-  doc,
-  setDoc,
-  getFirestore,
-} from "firebase/firestore";
+import { doc, setDoc, getFirestore } from "firebase/firestore";
 
 //
 import { initializeApp } from "firebase/app";
@@ -28,10 +24,10 @@ const db = getFirestore(app);
 
 export default function PollEl() {
   const polltitleblock = useRef();
-  const pollInput = useRef();
-  const pollInput2 = useRef();
-  const pollInput3 = useRef();
-  const pollInput4 = useRef();
+  const pollInputOptA = useRef();
+  const pollInputOptB = useRef();
+  const pollInputOptC = useRef();
+  const pollInputOptD = useRef();
   const postbutton = useRef();
   const pollpop = useRef();
   const closeicon = useRef();
@@ -40,11 +36,11 @@ export default function PollEl() {
     // first
 
     return () => {
-      check();
+      checkifLocalStorageisValid();
     };
   }, []);
 
-  const check = () => {
+  const checkifLocalStorageisValid = () => {
     if (localStorage.getItem("pollC") === "true") {
       const pollpop_ = pollpop.current.style;
       const pollpop2 = pollpop.current;
@@ -58,7 +54,6 @@ export default function PollEl() {
       if (pollpop2.id === "show") {
         localStorage.setItem("popup", false);
       }
-      //   popup
     }
   };
 
@@ -66,64 +61,21 @@ export default function PollEl() {
     // function to publish the poll
     // when user clicks on publish poll button
     const pollTitleBlock = polltitleblock.current.value;
-    const pollInputVal = pollInput.current.value;
-    const pollInputVal2 = pollInput2.current.value;
-    const pollInputVal3 = pollInput3.current.value;
-    const pollInputVal4 = pollInput4.current.value;
+    const pollOptA = pollInputOptA.current.value;
+    const pollOptB = pollInputOptB.current.value;
+    const pollOptC = pollInputOptC.current.value;
+    const pollOptD = pollInputOptD.current.value;
 
     if (pollTitleBlock === "") {
-      alert("Title is required");
-      return;
+      alert("Poll title is required ❌");
     }
     if (
-      pollInputVal === "" ||
-      pollInputVal2 === "" ||
-      pollInputVal3 === "" ||
-      pollInputVal4 === ""
+      pollOptA === "" &&
+      pollOptB === "" &&
+      pollOptC === "" &&
+      pollOptD === ""
     ) {
-      alert("Poll is required");
-      return;
-    } else if (
-      pollInputVal.length < 2 ||
-      pollInputVal2.length < 2 ||
-      pollInputVal3.length < 2 ||
-      pollInputVal4.length < 2
-    ) {
-      alert("Poll must be at least 2 characters");
-      return;
-    } else if (
-      pollTitleBlock !== "" &&
-      pollInput !== "" &&
-      pollInput2 !== "" &&
-      pollInput3 !== "" &&
-      pollInput4 !== ""
-    ) {
-      // random post sting id
-      const pollid =
-        Math.random().toString(36).substring(2, 15) +
-        Math.random().toString(36).substring(2, 15);
-      const cityRef = doc(db, "pollRef", pollid);
-
-      const poll_menu = {
-        title: pollTitleBlock,
-        poll_tab: pollInputVal,
-        poll_tab2: pollInputVal2,
-        poll_tab3: pollInputVal3,
-        poll_tab4: pollInputVal4,
-      };
-      localStorage.setItem("poll_title", pollTitleBlock);
-      localStorage.setItem("poll_tab", pollInputVal);
-      localStorage.setItem("poll_tab2", pollInputVal2);
-      localStorage.setItem("poll_tab3", pollInputVal3);
-      localStorage.setItem("poll_tab4", pollInputVal4);
-      console.log("poll_menu => ", poll_menu);
-      setDoc(cityRef, {
-        data: poll_menu,
-      });
-
-      setTimeout(() => {
-        localStorage.setItem("previousID", pollid);
-      }, 1000);
+      alert("Poll options are required ❌");
     }
   };
 
@@ -162,7 +114,7 @@ export default function PollEl() {
               type="text"
               placeholder="OptionA"
               id="getinput"
-              ref={pollInput}
+              ref={pollInputOptA}
             />
           </div>
           <div className={styles.poll_input}>
@@ -170,7 +122,7 @@ export default function PollEl() {
               type="text"
               placeholder="OptionB"
               id="getinput"
-              ref={pollInput2}
+              ref={pollInputOptB}
             />
           </div>
           <div className={styles.poll_input}>
@@ -178,7 +130,7 @@ export default function PollEl() {
               type="text"
               placeholder="OptionC"
               id="getinput"
-              ref={pollInput3}
+              ref={pollInputOptC}
             />
           </div>
           <div className={styles.poll_input}>
@@ -186,7 +138,7 @@ export default function PollEl() {
               type="text"
               placeholder="OptionD"
               id="getinput"
-              ref={pollInput4}
+              ref={pollInputOptD}
             />
           </div>
         </div>
