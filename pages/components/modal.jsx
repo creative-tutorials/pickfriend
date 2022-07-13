@@ -1,4 +1,5 @@
-import { useRef, useEffect } from "react";
+import { sendHandlePost } from "./post/handlePost";
+import { useRef, useEffect, useState } from "react";
 import styles from "../../styles/Home.module.css";
 import { doc, setDoc, getFirestore } from "firebase/firestore";
 
@@ -25,8 +26,10 @@ const db = getFirestore(app);
 export default function PopUp() {
   const popup = useRef();
   const textblock = useRef();
+  const imageObejctUrl = useRef();
   const closeicon = useRef();
   const postbutton = useRef();
+  const [isAccepted, setisAccepted] = useState(false);
 
   useEffect(() => {
     // first
@@ -75,15 +78,14 @@ export default function PopUp() {
     }
   };
 
-  const postcontent = () => {
+  const postcontent = async () => {
     const retrTextblock = textblock.current.value;
+    const imgObjURL = imageObejctUrl.current.value;
     const retrpostbutton = postbutton.current;
 
     if (retrTextblock === "") {
-      alert("please fill in all fields");
+      alert("please fill in all fields to post");
     } else {
-      // random post sting id
-      alert("posting...");
       const postid =
         Math.random().toString(36).substring(2, 15) +
         Math.random().toString(36).substring(2, 15);
@@ -92,6 +94,18 @@ export default function PopUp() {
         text: retrTextblock,
       };
       setDoc(cityRef, { data: post });
+      localStorage.setItem("deleteId", postid);
+    }
+    if (retrTextblock !== "" && imgObjURL !== "") {
+      await deleteDoc(db, "postRef", localStorage.getItem("deleteId"));
+
+      sendHandlePost(
+        retrTextblock,
+        imgObjURL,
+        setisAccepted,
+        retrpostbutton,
+        isAccepted
+      );
     }
   };
   return (
@@ -128,10 +142,13 @@ export default function PopUp() {
             <i className="fa-solid fa-strikethrough"></i>
           </div>
         </div>
-        <textarea
-          placeholder="What you Picking?"
-          ref={textblock}
-        ></textarea>
+        <input
+          type="text"
+          id="imageobejecturl"
+          placeholder="Enter Image Object URL"
+          ref={imageObejctUrl}
+        />
+        <textarea placeholder="What you Picking?" ref={textblock}></textarea>
       </div>
       <div className={styles.seprate}>
         <div className={styles.seprate_line}></div>

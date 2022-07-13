@@ -1,0 +1,28 @@
+/* notify module css */
+.slide_notification {
+  position: absolute;
+  z-index: 999;
+  /* height: 55px; */
+  top: 120px;
+  left: -100%;
+  padding: 5px 10px;
+  background: red;
+  border-radius: 5px;
+  border: 1px solid;
+  color: #0c5460;
+  background-color: #d1ecf1;
+  border-color: #bee5eb;
+  transition: all 0.3s ease-in-out;
+}
+/* .slide_notification.show {
+  left: 30px;
+} */
+.slide_notification .slide_notification_text p span i {
+  font-size: 1.3rem;
+  margin-right: 10px;
+}
+
+.slide_notification .slide_notification_text p a {
+  color: #007bff !important;
+  text-decoration: none;
+}

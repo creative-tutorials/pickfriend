@@ -1,7 +1,9 @@
-import { ImagePost } from './post/imagePost';
+import { Notifypop } from './event/notifypop';
+import { ImagePost } from "./post/imagePost";
 import { Post2 } from "./post/post2";
 import { Post } from "./post/post";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "../../styles/Home.module.css";
 import { useRef, useEffect } from "react";
 import {
@@ -38,9 +40,8 @@ const db = getFirestore(app);
 
 export default function Body() {
   const postBrd = useRef();
-  const count = useRef();
+  const slideNotify = useRef();
   const post_user = useRef();
-  const counter = 0;
   useEffect(() => {
     // first
 
@@ -95,6 +96,32 @@ export default function Body() {
     });
     // *
   };
+  const uploadFile = async (e) => {
+    const slideNt = slideNotify.current;
+    // convert file to reader
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      console.log(reader.result);
+      localStorage.setItem("image", reader.result);
+    };
+    //* if file size is greater than 500kb, alert the user and stop the upload
+    if (e.target.files[0].size > 500000) {
+      alert("file size is too big upload a smaller file or compress it");
+      e.target.value = "";
+    }
+    // if file is not empty, read the file
+    if (e.target.files[0]) {
+      reader.readAsDataURL(e.target.files[0]);
+      slideNt.style.left = "30px";
+      setTimeout(() => {
+        slideNt.style.left = "-100%";
+      }, 5000);
+    } else {
+      // setImage(null);
+      console.log("file is empty");
+    }
+  };
   return (
     <div className={styles.mains_body} ref={postBrd}>
       <div className={styles.post_div}>
@@ -111,30 +138,7 @@ export default function Body() {
             id="file"
             accept={"image/jpg, image/png, image/jpeg, image/gif, video/mp4"}
             hidden
-            onChange={(event) => {
-              // convert file to reader
-
-              const reader = new FileReader();
-              reader.onload = () => {
-                // set image src to reader.result
-                // setImage(reader.result);
-                console.log(reader.result);
-              };
-              //* if file size is greater than 500kb, alert the user and stop the upload
-              if (event.target.files[0].size > 500000) {
-                alert(
-                  "file size is too big upload a smaller file or compress it"
-                );
-                event.target.value = "";
-              }
-              // if file is not empty, read the file
-              if (event.target.files[0]) {
-                reader.readAsDataURL(event.target.files[0]);
-              } else {
-                // setImage(null);
-                console.log("file is empty");
-              }
-            }}
+            onChange={uploadFile}
           />
           <div className={styles.image_upload}>
             <label htmlFor="file">
@@ -145,7 +149,8 @@ export default function Body() {
       </div>
       <Post post_user={post_user} />
       <Post2 post_user={post_user} />
-      <ImagePost     />
+      <ImagePost />
+      <Notifypop  slideNotify={slideNotify}  />
     </div>
   );
 }

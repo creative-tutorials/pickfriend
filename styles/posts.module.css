@@ -1,12 +1,10 @@
 .image_post {
   width: 100%;
-  /* max-width: 500px; */
   background: var(--white-bg);
   padding: 30px;
   border-radius: 5px;
-  margin-top: 30px;
-  position: relative;
-  box-shadow: var(--box-shadow2);
+  border-bottom: 1px solid #eeeef0;
+  /* position: relative; */
 }
 .image_post .image {
   width: 100%;
