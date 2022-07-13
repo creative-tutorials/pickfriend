@@ -1,6 +1,6 @@
 # PickFriend 📸
 
-![App Screenshot](https://media4.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif?cid=ecf05e47zweq7cq4abk5hhlwj6eblsfy52xm7mug2ooaysdj&rid=giphy.gif&ct=g)
+![App Screenshot](/public/logo.jpg)
 
 PickFriend is a social media web application that allows you to upload your favorite images, thoughts and inspirational quotes
 PickFriend is a social media app that allows you to post your thoughts freely
@@ -15,27 +15,18 @@ Demo Coming Soon 🚀
 
 ## Feedback
 
-If you have any feedback, please reach out to us at [FYTEQ](mailto:treasureedesemhen500@gmail.com)
+If you have any feedback, please reach out to us at [Pic DEV](mailto:treasureedesemhen500@gmail.com)
 
 ## Installation
 
-Install **PickFriend** with npm
+Our app will soon be available on the Google Play Store, Apple Store and the Web Soon.
 
-```bash
-  npm install pickiexoz
-  cd pickiexoz
-```
 
-Install **PickFriend** with yarn
+#
 
-```bash
-  yarn add pickiexoz
-  cd pickiexoz
-```
-
-```
-Note that the CLI is not yet available for the browser. We will be adding it soon once the full web application is ready.
-```
+Note that this is a beta version of the app. And it's not yet ready for production use. We are working hard to make it ready for production use. Also note that this project has copyrights and is not open source. The only way to contribute is to first fill an application form. If your application is accepted, we will be happy to bring you in as a contributor. Any acts of copyright infringement will be dealt with which will result in a lawsuit.
+So create your own projects don't copy other's projects. All other Projects I have made are free and open-source but this project is not. 
+# Befware of copyright ⚠.
 
 ## Tech Stack
 
@@ -47,13 +38,15 @@ Note that the CLI is not yet available for the browser. We will be adding it soo
 
 <img src="https://www.svgrepo.com/show/353735/firebase.svg" width="100px"/>
 
+
+#
 ## Screenshots
 
 This screenshot has been removed by the developers due to copyright or privacy reasons.
 
 ## Support
 
-For support, email treasureedesemhen500@gmail.com or join our [`Discord channel`](https://discord.gg/AYxRnTC82H).
+For support, email treasureedesemhen500@gmail.com or join our [`Telegram channel`](https://t.me/fyteq).
 
 ## Optimizations
 
@@ -78,9 +71,15 @@ Our Privacy Policy states that we do not collect any sensitive information from 
 
 ## Copyright
 
-Copyright © 2020 Pick. All rights reserved.
+Copyright © 2020 Pick DEV. All rights reserved.
 
 
 ## Built with
 
 [Next.js by **Vercel**](https://nextjs.org)
+
+#
+  
+## ℹ Information
+
+This project was built by a group of students. We're Young and Creative Developers.
