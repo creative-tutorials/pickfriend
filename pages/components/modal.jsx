@@ -1,7 +1,7 @@
 import { sendHandlePost } from "./post/handlePost";
 import { useRef, useEffect, useState } from "react";
 import styles from "../../styles/Home.module.css";
-import { doc, setDoc, getFirestore } from "firebase/firestore";
+import { doc, setDoc, deleteDoc, getFirestore } from "firebase/firestore";
 
 //
 import { initializeApp } from "firebase/app";
@@ -79,6 +79,7 @@ export default function PopUp() {
   };
 
   const postcontent = async () => {
+    // function that posts the content to the database
     const retrTextblock = textblock.current.value;
     const imgObjURL = imageObejctUrl.current.value;
     const retrpostbutton = postbutton.current;
@@ -97,7 +98,7 @@ export default function PopUp() {
       localStorage.setItem("deleteId", postid);
     }
     if (retrTextblock !== "" && imgObjURL !== "") {
-      await deleteDoc(db, "postRef", localStorage.getItem("deleteId"));
+      await deleteDoc(doc(db, "postRef", localStorage.getItem("deleteId")));
 
       sendHandlePost(
         retrTextblock,
@@ -106,6 +107,7 @@ export default function PopUp() {
         retrpostbutton,
         isAccepted
       );
+      // component function to handle image post
     }
   };
   return (
