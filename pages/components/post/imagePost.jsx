@@ -76,11 +76,11 @@ export function ImagePost({}) {
       <div class=${newstyle.image}>
         <Image
           src="${doc.data().data.image}"
-          width=${500}
-          height=${300}
           alt="image of post"
           style="object-fit: cover;
-          border-radius: 5px;"
+          border-radius: 5px;
+          width: 100%;
+          height: 500px;"
         />
       </div>`;
       });
@@ -92,7 +92,7 @@ export function ImagePost({}) {
       slideNt.style.color = "#721c24";
       slideNt.style.borderColor = "#f5c6cb";
       setTimeout(() => {
-        slideNt.style.left = "-100%";
+        slideNt.style.left = "-5900%";
         slideNt.style.top = "120px";
       }, 5000);
       chngeText.innerHTML = `<span>
@@ -105,45 +105,7 @@ export function ImagePost({}) {
   return (
     <div className={newstyle.image_post} ref={image_post_ref}>
       <Notifypop slideNotify={slideNotify} changeText={changeText} />
-      {/* <div className={newstyle.imgpost_top}>
-        <div className={newstyle.top_of_top}>
-          <Image
-            width={30}
-            height={30}
-            objectFit="cover"
-            src={"/favicon.ico"}
-            alt="user image"
-          />
-          <div className={newstyle.top_of_left_name}>
-            <span className={newstyle.usex_namx}>
-              <span>User Name</span>
-            </span>
-          </div>
-          <div className={newstyle.top_of_right_time}>
-            <span className={newstyle.clock}>
-              <i className="fa-regular fa-clock"></i>
-              <span>1 hour ago</span>
-            </span>
-          </div>
-        </div>
-      </div>
-      <div className={newstyle.imgpost_text}>
-        <div className={newstyle.text}>
-          Hello World, this is a test post. try to see how it looks like.
-        </div>
-      </div>
-      <div className={newstyle.image}>
-        <Image
-          src="/postImage/unspalsh_lab1.png"
-          width={500}
-          height={300}
-          alt="image of post"
-          objectFit="cover"
-          style={{
-            borderRadius: "5px",
-          }}
-        />
-      </div> */}
+      {/*  */}
     </div>
   );
 }
