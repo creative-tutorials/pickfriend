@@ -1,4 +1,4 @@
-import { Notifypop } from './event/notifypop';
+import { Notifypop } from "./event/notifypop";
 import { ImagePost } from "./post/imagePost";
 import { Post2 } from "./post/post2";
 import { Post } from "./post/post";
@@ -115,7 +115,7 @@ export default function Body() {
       reader.readAsDataURL(e.target.files[0]);
       slideNt.style.left = "30px";
       setTimeout(() => {
-        slideNt.style.left = "-100%";
+        slideNt.style.left = "-5900%";
       }, 5000);
     } else {
       // setImage(null);
@@ -124,6 +124,7 @@ export default function Body() {
   };
   return (
     <div className={styles.mains_body} ref={postBrd}>
+      <Notifypop slideNotify={slideNotify} />
       <div className={styles.post_div}>
         <div className={styles.pst_left}>
           <Image src="/favicon.ico" width={30} height={30} alt="userimage" />
@@ -150,7 +151,6 @@ export default function Body() {
       <Post post_user={post_user} />
       <Post2 post_user={post_user} />
       <ImagePost />
-      <Notifypop  slideNotify={slideNotify}  />
     </div>
   );
 }
