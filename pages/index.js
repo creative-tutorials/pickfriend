@@ -1,4 +1,4 @@
-import { Header } from './components/Header/Header';
+import { Header } from "./components/Header/Header";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
@@ -94,7 +94,11 @@ export default function Home() {
   return (
     <div className={styles.container}>
       {/*  */}
-      <Header   header_user={header_user} toogleClass={toogleClass} dropdwn={dropdwn}  />
+      <Header
+        header_user={header_user}
+        toogleClass={toogleClass}
+        dropdwn={dropdwn}
+      />
       <BodyPage />
       {/* popup input box */}
       <ModalBox />
