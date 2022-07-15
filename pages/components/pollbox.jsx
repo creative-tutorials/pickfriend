@@ -22,7 +22,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-export default function PollEl() {
+const PollContextPage = () => {
   const polltitleblock = useRef();
   const pollInputOptA = useRef();
   const pollInputOptB = useRef();
@@ -163,3 +163,4 @@ export default function PollEl() {
     </div>
   );
 }
+export default PollContextPage;
