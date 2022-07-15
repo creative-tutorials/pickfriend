@@ -1,3 +1,4 @@
+import { CreateImagePost } from "../client/fetchImagePost";
 import React from "react";
 import Image from "next/image";
 import {
@@ -35,57 +36,21 @@ export function ImagePost({}) {
   }, []);
 
   const getImagePost = async () => {
-    const getState = localStorage.getItem("isAccepted");
     const imagepostRef = image_post_ref.current;
     const slideNt = slideNotify.current;
     const chngeText = changeText.current;
-    if (getState) {
-      // do something
-      console.log("getState");
+    const checkInternetConnection = await fetch("https://62d182dedccad0cf1769313a.mockapi.io/users");
+    if (checkInternetConnection.status === 200) {
+      console.info("connected");
       const querySnapshot = await getDocs(collection(db, "ImagePost"));
       querySnapshot.forEach((doc) => {
         console.log(doc.id, " ImagePost => ", doc.data());
 
-        imagepostRef.innerHTML = `<div class=${newstyle.imgpost_top}>
-        <div class=${newstyle.top_of_top}>
-          <Image
-            width=${30}
-            height=${30}
-            style="object-fit: cover;"
-            src="/favicon.ico"
-            alt="user image"
-          />
-          <div class=${newstyle.top_of_left_name}>
-            <span class=${newstyle.usex_namx}>
-              <span>User Name</span>
-            </span>
-          </div>
-          <div class=${newstyle.top_of_right_time}>
-            <span class=${newstyle.clock}>
-              <i class="fa-regular fa-clock"></i>
-              <span>1 hour ago</span>
-            </span>
-          </div>
-        </div>
-      </div>
-      <div class=${newstyle.imgpost_text}>
-        <div class=${newstyle.text}>
-          ${doc.data().data.text}
-        </div>
-      </div>
-      <div class=${newstyle.image}>
-        <Image
-          src="${doc.data().data.image}"
-          alt="image of post"
-          style="object-fit: cover;
-          border-radius: 5px;
-          width: 100%;
-          height: 500px;"
-        />
-      </div>`;
+        CreateImagePost(imagepostRef, doc);
       });
     } else {
-      // alert("Error can't complete request because image URL is not found");
+      console.log("There seems to be a problem with your internet connection");
+
       slideNt.style.left = "30px";
       slideNt.style.top = "120px";
       slideNt.style.backgroundColor = "#f8d7da";
@@ -97,7 +62,7 @@ export function ImagePost({}) {
       }, 5000);
       chngeText.innerHTML = `<span>
       <i class="fa-light fa-bell"></i>
-      Error 274: Can't load post, seems post state is not accepted
+      Error: There seems to be a problem with your internet connection
       </span>`;
     }
   };
