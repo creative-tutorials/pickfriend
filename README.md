@@ -26,7 +26,7 @@ Our app will soon be available on the Google Play Store, Apple Store and the Web
 
 Note that this is a beta version of the app. And it's not yet ready for production use. We are working hard to make it ready for production use. Also note that this project has copyrights and is not open source. The only way to contribute is to first fill an application form. If your application is accepted, we will be happy to bring you in as a contributor. Any acts of copyright infringement will be dealt with which will result in a lawsuit.
 So create your own projects don't copy other's projects. All other Projects I have made are free and open-source but this project is not. 
-# Befware of copyright ⚠.
+# Beware of copyright ⚠.
 
 ## Tech Stack
 
