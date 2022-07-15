@@ -23,7 +23,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-export default function PopUp() {
+const MoadalPage = () => {
   const popup = useRef();
   const textblock = useRef();
   const imageObejctUrl = useRef();
@@ -94,7 +94,22 @@ export default function PopUp() {
       let post = {
         text: retrTextblock,
       };
-      setDoc(cityRef, { data: post });
+      setisAccepted(true);
+      setTimeout(() => {
+        retrpostbutton.disabled = true;
+        retrpostbutton.innerText = "Posting...";
+      }, 1000);
+      setTimeout(() => {
+        retrpostbutton.disabled = false;
+        retrpostbutton.innerText = "Post";
+        setisAccepted(true);
+        setDoc(cityRef, { data: post, counterDB: 0 });
+        localStorage.setItem("retrieveId", postid);
+      }, 5000);
+
+      if (isAccepted === true) {
+        console.log(isAccepted);
+      }
       localStorage.setItem("deleteId", postid);
     }
     if (retrTextblock !== "" && imgObjURL !== "") {
@@ -174,4 +189,5 @@ export default function PopUp() {
       </div>
     </div>
   );
-}
+};
+export default MoadalPage;
