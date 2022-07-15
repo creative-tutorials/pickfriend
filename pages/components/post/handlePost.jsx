@@ -33,17 +33,20 @@ export function sendHandlePost(
   };
   setDoc(imagePostRef, {
     data: post,
+    counterDB: 0
   });
   setisAccepted(true);
-  retrpostbutton.disabled = true;
-  retrpostbutton.innerHTML = "Posting...";
+  setTimeout(() => {
+    retrpostbutton.disabled = true;
+    retrpostbutton.innerText = "Posting...";
+  }, 1000);
   setTimeout(() => {
     retrpostbutton.disabled = false;
-    retrpostbutton.innerHTML = "Post";
+    retrpostbutton.innerText = "Post";
     setisAccepted(true);
   }, 5000);
 
   if (isAccepted === true) {
-    localStorage.setItem("isAccepted", isAccepted);
+    console.log(isAccepted);
   }
 }
