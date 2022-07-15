@@ -9,8 +9,8 @@ export function Header({ header_user, toogleClass, dropdwn }) {
         <Image
           src="/logo.png"
           alt="pickieimage"
-          width={100}
-          height={100}
+          width={70}
+          height={70}
           style={{
             borderRadius: "50%",
             cursor: "pointer",
