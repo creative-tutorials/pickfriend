@@ -136,6 +136,7 @@
   border: 1px solid transparent;
   margin-top: 100px;
   box-shadow: var(--box-shadow);
+  border-bottom: 1px solid #eeeef0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -214,12 +215,7 @@
   span {
   font-size: 1.2rem;
 }
-.mains_body
-  .post_board
-  .post_board_content
-  .pst_right
-  .pst_right_bottom
-  .pst_right_bottom_icon {
+.pst_right_bottom_icon {
   display: flex;
   align-items: center;
   margin-top: 20px;
@@ -227,13 +223,7 @@
   width: 100%;
   text-align: center;
 }
-.mains_body
-  .post_board
-  .post_board_content
-  .pst_right
-  .pst_right_bottom
-  .pst_right_bottom_icon
-  i {
+.pst_right_bottom_icon i {
   font-size: 1.2rem;
   width: 100%;
   margin-right: 30px;
@@ -242,13 +232,7 @@
   cursor: pointer;
   transition: 0.3s ease;
 }
-.mains_body
-  .post_board
-  .post_board_content
-  .pst_right
-  .pst_right_bottom
-  .pst_right_bottom_icon
-  i:hover {
+.pst_right_bottom_icon i:hover {
   color: #3c78af;
 }
 /* primex body ends - body jsx */
