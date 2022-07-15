@@ -1,3 +1,4 @@
+import { sendTextPost } from './client/mainpost';
 import { Notifypop } from "./event/notifypop";
 import { ImagePost } from "./post/imagePost";
 import { Post2 } from "./post/post2";
@@ -11,9 +12,7 @@ import {
   setDoc,
   getDocs,
   collection,
-  query,
-  where,
-  deleteDoc,
+  updateDoc,
   getFirestore,
 } from "firebase/firestore";
 
@@ -41,34 +40,11 @@ const db = getFirestore(app);
 export default function Body() {
   const postBrd = useRef();
   const slideNotify = useRef();
-  const post_user = useRef();
   useEffect(() => {
-    // first
-
     return () => {
-      getPosts();
-      getUserStatus();
+      fetchPostFromDB();
     };
   }, []);
-
-  const getUserStatus = async () => {
-    const usr = localStorage.getItem("emailval");
-    const getPostUser = post_user.current;
-    const random_user_name = "";
-    const char = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-
-    for (let i = 0; i < 10; i++) {
-      random_user_name += char.charAt(Math.floor(Math.random() * char.length));
-    }
-
-    if (usr) {
-      console.log("user is logged in");
-      getPostUser.innerHTML = random_user_name;
-    } else {
-      console.log("user is not logged in");
-      getPostUser.innerHTML = "guest";
-    }
-  };
 
   const showPopup = () => {
     // local
@@ -78,7 +54,7 @@ export default function Body() {
       location.reload();
     }, 3000);
   };
-  const getPosts = async () => {
+  const fetchPostFromDB = async () => {
     const getpostBrd = postBrd.current;
     const usr = localStorage.getItem("emailval");
     const querySnapshot = await getDocs(collection(db, "postRef"));
@@ -86,13 +62,13 @@ export default function Body() {
       const createEl = document.createElement("div");
       //? doc.data() is never undefined for query doc snapshots
       console.log(doc.id, " => ", doc.data());
-      // console.log(doc.data().data.text);
       getpostBrd.appendChild(createEl);
       //
       //
       //* generate radom post id
       let char = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-      MainPost(createEl, post_user, doc);
+      // creating a function to fetch the post from the database
+      sendTextPost(createEl, doc, docRef, db);
     });
     // *
   };
@@ -148,9 +124,9 @@ export default function Body() {
           </div>
         </div>
       </div>
-      <Post post_user={post_user} />
-      <Post2 post_user={post_user} />
       <ImagePost />
     </div>
   );
 }
+
+
