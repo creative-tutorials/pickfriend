@@ -189,7 +189,6 @@
   .usr_post
   .usr_post_name
   span {
-  font-size: 1.2rem;
   margin-left: 5px;
 }
 .mains_body
@@ -469,4 +468,9 @@
 }
 .pst_right_bottom_info .psttab .psttab_right_info {
   margin-right: 10px;
+}
+@media screen and (max-width: 848px) {
+  .userhtml {
+    font-size: 1rem;
+  }
 }
