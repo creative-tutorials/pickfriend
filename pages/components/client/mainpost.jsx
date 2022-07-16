@@ -1,5 +1,5 @@
 import styles from "../../../styles/Home.module.css";
-export function sendTextPost(createEl, doc, docRef, db) {
+export function sendTextPost(createEl, doc, docRef, db, updateDoc) {
   createEl.innerHTML += `<div class=${styles.post_board}>
   <div class=${styles.post_board_content}>
     <div class=${styles.pst_right}>
@@ -14,7 +14,7 @@ export function sendTextPost(createEl, doc, docRef, db) {
             />
           </div>
           <div class=${styles.usr_post_name}>
-            <span id="getuserhtml">User Name</span>
+            <span class=${styles.userhtml} id="getuserhtml">User Name</span>
           </div>
           <div class=${styles.usr_post_time}>
             <span>
@@ -81,41 +81,45 @@ export function sendTextPost(createEl, doc, docRef, db) {
   );
   likeicon.forEach((element) => {
     // looping through the like icon, if the user has liked the post, increase the number of likes
-    element.onclick = () => {
-      console.log("like");
-      like_count++;
-      console.log(like_count); // if like count is greater than 0, then don't allow the user to like the post again
-
-      if (like_count > 0) {
-        // set Cookies
-        document.cookie =
-          "test=test; expires=Sat, 31 Dec 2022 00:00:00 UTC; path=/;"; // set cookie to expire in 2022
+    element.addEventListener("click", () => {
+      if (element.classList.contains("fa-thumbs-up")) {
+        element.classList.remove("fa-thumbs-up");
+        element.classList.add("fa-thumbs-down");
+        like_count++;
+        updateDoc(retriveCounter, {
+          counterDB: like_count,
+        });
+      } else {
+        element.classList.remove("fa-thumbs-down");
+        element.classList.add("fa-thumbs-up");
+        like_count--;
+        updateDoc(retriveCounter, {
+          counterDB: like_count,
+        });
       }
-
-      updateDoc(retriveCounter, {
-        counterDB: like_count,
-      });
-    };
+      document.cookie =
+        "test=test; expires=Sat, 31 Dec 2022 00:00:00 UTC; path=/;"; // set cookie to expire in 2022
+      if (document.cookie.includes("test")) {
+        console.log("cookie is set");
+        element.style.pointerEvents = "none";
+      } else {
+        console.log("cookie is not set");
+        element.style.pointerEvents = "auto";
+      }
+    });
   });
 
   if (document.cookie.indexOf("test=test") !== -1) {
-    console.table({
-      setting: "cookie is set",
-    }); // if cookie is set, then don't allow the user to like the post again
+    console.info("cookie is set"); // if cookie is set, then don't allow the user to like the post again
     likeicon.forEach((element) => {
       // looping through the like icon, if the user has liked the post, increase the number of likes
-      element.onclick = () => {
-        element.style.pointerEvents = "none";
-      };
+      element.style.pointerEvents = "none";
     });
   } else {
     console.error("cookie is not set"); // if cookie is not set, then allow the user to like the post again
 
     likeicon.forEach((element) => {
-      // looping through the like icon, if the user has liked the post, increase the number of likes
-      element.onclick = () => {
-        element.style.pointerEvents = "auto";
-      };
+      element.style.pointerEvents = "auto";
     });
   }
 }

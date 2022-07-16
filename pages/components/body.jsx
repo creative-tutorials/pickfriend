@@ -68,7 +68,7 @@ export default function Body() {
       //* generate radom post id
       let char = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       // creating a function to fetch the post from the database
-      sendTextPost(createEl, doc, docRef, db);
+      sendTextPost(createEl, doc, docRef, db, updateDoc);
     });
     // *
   };
