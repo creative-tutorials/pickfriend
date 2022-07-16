@@ -39,7 +39,9 @@ export function ImagePost({}) {
     const imagepostRef = image_post_ref.current;
     const slideNt = slideNotify.current;
     const chngeText = changeText.current;
-    const checkInternetConnection = await fetch("https://62d182dedccad0cf1769313a.mockapi.io/users");
+    const checkInternetConnection = await fetch(
+      "https://62d182dedccad0cf1769313a.mockapi.io/users"
+    );
     if (checkInternetConnection.status === 200) {
       console.info("connected");
       const querySnapshot = await getDocs(collection(db, "ImagePost"));
@@ -49,7 +51,6 @@ export function ImagePost({}) {
         CreateImagePost(imagepostRef, doc);
       });
     } else {
-      console.log("There seems to be a problem with your internet connection");
 
       slideNt.style.left = "30px";
       slideNt.style.top = "120px";
@@ -62,7 +63,7 @@ export function ImagePost({}) {
       }, 5000);
       chngeText.innerHTML = `<span>
       <i class="fa-light fa-bell"></i>
-      Error: There seems to be a problem with your internet connection
+      Error: Couldn't fetch data from server. Try again later.
       </span>`;
     }
   };
