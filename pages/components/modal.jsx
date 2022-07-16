@@ -1,4 +1,5 @@
-import { sendHandlePost } from "./post/handlePost";
+import { delCookie } from "./cookie/cookie";
+import { SendImagePost } from "./post/handlePost";
 import { useRef, useEffect, useState } from "react";
 import styles from "../../styles/Home.module.css";
 import { doc, setDoc, deleteDoc, getFirestore } from "firebase/firestore";
@@ -104,6 +105,8 @@ const MoadalPage = () => {
         retrpostbutton.innerText = "Post";
         setisAccepted(true);
         setDoc(cityRef, { data: post, counterDB: 0 });
+
+        delCookie(); // delete the cookie that is used to block the user from liking the same post twice
         localStorage.setItem("retrieveId", postid);
       }, 5000);
 
@@ -115,7 +118,7 @@ const MoadalPage = () => {
     if (retrTextblock !== "" && imgObjURL !== "") {
       await deleteDoc(doc(db, "postRef", localStorage.getItem("deleteId")));
 
-      sendHandlePost(
+      SendImagePost(
         retrTextblock,
         imgObjURL,
         setisAccepted,
