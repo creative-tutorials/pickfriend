@@ -46,7 +46,7 @@ This screenshot has been removed by the developers due to copyright or privacy r
 
 ## Support
 
-For support, email treasureedesemhen500@gmail.com or join our [`Telegram channel`](https://t.me/fyteq).
+For support, email picincapp@gmail.com or join our [`Telegram channel`](https://t.me/fyteq).
 
 ## Optimizations
 
