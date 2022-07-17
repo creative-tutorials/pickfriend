@@ -82,4 +82,4 @@ Copyright © 2020 Pick DEV. All rights reserved.
   
 ## ℹ Information
 
-This project was built by a group of students. We're Young and Creative Developers.
+This project was built and designed by a student.
