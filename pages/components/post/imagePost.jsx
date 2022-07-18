@@ -4,8 +4,8 @@ import Image from "next/image";
 import {
   getFirestore,
   collection,
-  query,
-  where,
+  doc as docRef,
+  updateDoc,
   getDocs,
 } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
@@ -40,7 +40,7 @@ export function ImagePost({}) {
     const slideNt = slideNotify.current;
     const chngeText = changeText.current;
     const checkInternetConnection = await fetch(
-      "https://62d182dedccad0cf1769313a.mockapi.io/users"
+      "https://62d182dedccad0cf1769313a.mockapi.io/info"
     );
     if (checkInternetConnection.status === 200) {
       console.info("connected");
@@ -48,7 +48,7 @@ export function ImagePost({}) {
       querySnapshot.forEach((doc) => {
         console.log(doc.id, " ImagePost => ", doc.data());
 
-        CreateImagePost(imagepostRef, doc);
+        CreateImagePost(imagepostRef, doc, db, docRef, updateDoc);
       });
     } else {
 
