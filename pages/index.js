@@ -82,6 +82,7 @@ export default function Home() {
     } else {
       // alert("user is not logged in");
       console.log("user is not logged in");
+      window.location.href = "/components/Auth/signup";
       getheaderUser.innerHTML = "null";
       setUserStatus(false);
     }
