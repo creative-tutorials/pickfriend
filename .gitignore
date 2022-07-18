@@ -31,3 +31,4 @@ yarn-error.log*
 # vercel
 .vercel
 desktop.ini
+public/app icon.png
