@@ -2,12 +2,12 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "../../../styles/Home.module.css";
-export function Header({ header_user, toogleClass, dropdwn }) {
+export function Header({ header_user, toogleClass, toogleSidebar, dropdwn }) {
   return (
     <div className={styles.header} header_user={header_user}>
-      <div className={styles.logo}>
+      <div className={styles.logo} onClick={toogleSidebar}>
         <Image
-          src="/logo.png"
+          src="/app icon.png"
           alt="pickieimage"
           width={70}
           height={70}
@@ -30,12 +30,12 @@ export function Header({ header_user, toogleClass, dropdwn }) {
       <div className={styles.action_links}>
         <Link href="/chat">
           <a>
-            <i className="fa-regular fa-comment-dots"></i>
+            <i className="fa-light fa-comments"></i>
           </a>
         </Link>
         <Link href="/notification">
           <a>
-            <i className="fa-regular fa-bell"></i>
+            <i className="fa-light fa-bell"></i>
           </a>
         </Link>
       </div>
@@ -54,6 +54,8 @@ export function Header({ header_user, toogleClass, dropdwn }) {
                 style={{
                   borderRadius: "50%",
                 }}
+                placeholder={"blur"}
+                blurDataURL={`/logo.png`}
               />
               <span ref={header_user}></span>
             </div>
