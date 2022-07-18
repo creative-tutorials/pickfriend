@@ -23,18 +23,6 @@ export function SendImagePost(
   retrpostbutton,
   isAccepted
 ) {
-  const postid =
-    Math.random().toString(36).substring(2, 15) +
-    Math.random().toString(36).substring(2, 15);
-  const imagePostRef = doc(db, "ImagePost", postid);
-  let post = {
-    text: retrTextblock,
-    image: imgObjURL,
-  };
-  setDoc(imagePostRef, {
-    data: post,
-    counterDB: 0
-  });
   setisAccepted(true);
   setTimeout(() => {
     retrpostbutton.disabled = true;
@@ -44,6 +32,19 @@ export function SendImagePost(
     retrpostbutton.disabled = false;
     retrpostbutton.innerText = "Post";
     setisAccepted(true);
+    const postid =
+      Math.random().toString(36).substring(2, 15) +
+      Math.random().toString(36).substring(2, 15);
+    const imagePostRef = doc(db, "ImagePost", postid);
+    let post = {
+      text: retrTextblock,
+      image: imgObjURL,
+    };
+    setDoc(imagePostRef, {
+      data: post,
+      counterDB: 0,
+    });
+    localStorage.setItem("imgpostid", postid)
   }, 5000);
 
   if (isAccepted === true) {
