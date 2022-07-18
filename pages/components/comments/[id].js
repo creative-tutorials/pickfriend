@@ -1,3 +1,4 @@
+import { addComment } from "./addComment";
 import { Index } from "./index";
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
@@ -29,38 +30,23 @@ export default function Comments() {
     "beta app running on version 1.0.0",
   ]);
   const readComment = useRef();
+  const buttonText = useRef();
   useEffect(() => {
     // first
 
     return () => {
-      generateUUID();
+      // generateUUID();
     };
   }, []);
-
-  // generate UUID for the URL
-  const generateUUID = () => {
-    const UUID = "ABCDEFGHIJKLMNOP";
-    let captureID = "";
-    for (let i = 0; i < 10; i++) {
-      captureID += UUID.charAt(Math.floor(Math.random() * UUID.length));
-    }
-    // set the URL
-    window.history.pushState(null, null, `/components/comments/${captureID}`);
-
-    // set the uuid
-    setuuid(captureID);
-    console.log("state => ", captureID);
-  };
 
   // get the comments
   const postComment = async (e) => {
     const getCommentVal = readComment.current.value;
+    const btnTxt = buttonText.current;
     if (getCommentVal) {
       //? if the commentInputValue is not empty
       // set the comments
       setcomments([...comments, getCommentVal]);
-      // clear the input
-      readComment.current.value = "";
 
       console.log(
         "%c🧪comments => ",
@@ -75,31 +61,24 @@ export default function Comments() {
         comments[comments.length - 1]
       );
 
-      // Add a new document in collection "cities"
-      await addDocToDatabase();
+      const last_array_item = comments[comments.length - 1];
+      setTimeout(() => {
+        btnTxt.innerText = "Posting...";
+      }, 1000);
+      addComment(
+        btnTxt,
+        setDoc,
+        doc,
+        db,
+        readComment,
+        last_array_item,
+        setuuid
+      );
 
       localStorage.setItem("commentAllowed", true);
     } else {
       localStorage.setItem("commentAllowed", false);
       alert("Please enter a comment");
-    }
-
-    // create a comment id
-    async function addDocToDatabase() {
-      const last_array_item = comments[comments.length - 1];
-      const commentID = "ABCDEFGHIJKLMNOPQRSTUVWXYZ$@#1234";
-      let captureID = "";
-      for (let i = 0; i < 6; i++) {
-        captureID += commentID.charAt(
-          Math.floor(Math.random() * commentID.length)
-        );
-      }
-      await setDoc(doc(db, "commentRef", captureID), {
-        id: captureID,
-        comment: last_array_item,
-        commentdate: new Date().toLocaleString(),
-        // tags: ["👩‍💻", "💡", "🧪"],
-      });
     }
   };
 
@@ -134,7 +113,9 @@ export default function Comments() {
                   ></textarea>
                 </div>
                 <div className={cmnt.comment_input_top_right_button}>
-                  <button onClick={postComment}>Post</button>
+                  <button onClick={postComment}>
+                    <span ref={buttonText}>Post</span>
+                  </button>
                 </div>
               </div>
             </div>
