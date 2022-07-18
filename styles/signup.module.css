@@ -22,8 +22,8 @@
   font-weight: 500;
 }
 .SignUpBox .SignUpBoxHeader .SignUpHeaderText i {
-  color: #0667d6;
-  background: rgba(6, 103, 214, 0.241);
+  color: rgb(254, 24, 33);
+  background: rgba(254, 24, 32, 0.278);
   padding: 10px 10px;
   border-radius: 50%;
   margin-top: 10px;
@@ -31,7 +31,7 @@
 .SignUpBox .SignUpBoxHeader .SignUpDescriptionText p {
   text-align: left;
   font-size: 1rem;
-  color: rgba(6, 103, 214, 0.682);
+  color: rgb(254, 24, 33);
   font-weight: 500;
 }
 .SignUpBox .SignupBody {
@@ -55,7 +55,7 @@
   border: 2px solid #ccc;
 }
 .SignUpBox .SignupBody .InputBox input:focus {
-  border-color: #2876d0;
+  border-color: rgb(244, 125, 129);
 }
 .SignUpBox .SignupBody .InputBox .show_hide {
   position: absolute;
@@ -72,7 +72,7 @@
 
 .SignUpBox .SignupBody .LoginFooter .help_link a {
   text-decoration: none;
-  color: #2876d0;
+  color: rgb(254, 24, 33);
 }
 .SignUpBox .SignupBody .LoginFooter .help_link a:hover {
   text-decoration: underline;
@@ -81,7 +81,7 @@
   margin-top: 20px;
 }
 .SignUpBox .SignupBody .LoginFooter .LoginButton button {
-  background-color: #2876d0;
+  background-color: rgb(228, 71, 76);
   color: #fff;
   padding: 15px 20px;
   border: none;
@@ -93,7 +93,7 @@
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
 }
 .SignUpBox .SignupBody .LoginFooter .LoginButton button:hover {
-  background-color: #116ec6;
+  background-color: rgb(170, 50, 54);
 }
 
 .SignUpBox .SignupBody .LoginFooter .signup_link {
@@ -101,7 +101,7 @@
 }
 .SignUpBox .SignupBody .LoginFooter .signup_link a {
   text-decoration: none;
-  color: #2876d0;
+  color: rgb(254, 24, 33);
   margin-left: 3px;
 }
 .SignUpBox .SignupBody .LoginFooter .signup_link a:hover {

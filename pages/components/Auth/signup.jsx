@@ -142,10 +142,10 @@ const SignUpPage = () => {
               width={100}
               height={100}
               objectFit="cover"
-              src={"/logo.png"}
+              src={"/app icon.png"}
               alt="logo icon"
               placeholder="blur"
-              blurDataURL={"/logo.png"}
+              blurDataURL={"/app icon.png"}
               style={{
                 borderRadius: "50%",
               }}
