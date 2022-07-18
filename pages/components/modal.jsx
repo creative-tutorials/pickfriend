@@ -168,7 +168,7 @@ const MoadalPage = () => {
           placeholder="Enter Image Object URL"
           ref={imageObejctUrl}
         />
-        <textarea placeholder="What you Picking?" ref={textblock}></textarea>
+        <textarea placeholder="What's your Thoughts?" ref={textblock}></textarea>
       </div>
       <div className={styles.seprate}>
         <div className={styles.seprate_line}></div>
