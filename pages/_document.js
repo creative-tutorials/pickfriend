@@ -13,7 +13,7 @@ class MyDocument extends Document {
         <title>PickFriend - Find Friends and Connect</title>
         <Head>
           <meta name="description" content="PickFriend - Find Friends and Connect" />
-          <link rel="icon" href="/favicon2.ico" />
+          <link rel="icon" href="/app icon.png" />
           <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta3/css/all.css" />
         </Head>
         <body>
