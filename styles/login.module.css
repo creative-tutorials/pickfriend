@@ -22,8 +22,8 @@
   font-weight: 500;
 }
 .LoginBox .LoginBoxHeader .LoginHeaderText i {
-  color: #0667d6;
-  background: rgba(6, 103, 214, 0.241);
+  color: rgb(254, 24, 33);
+  background: rgba(254, 24, 32, 0.178);
   padding: 10px 10px;
   border-radius: 50%;
   margin-top: 10px;
@@ -31,7 +31,7 @@
 .LoginBox .LoginBoxHeader .LoginDescriptionText p {
   text-align: left;
   font-size: 1rem;
-  color: rgba(6, 103, 214, 0.682);
+  color: rgb(254, 24, 33);
   font-weight: 500;
 }
 .LoginBox .LoginBoxBody {
@@ -48,14 +48,14 @@
   border: 2px solid #ccc;
 }
 .LoginBox .LoginBoxBody .InputBox input:focus {
-  border-color: #2876d0;
+  border-color: rgb(244, 125, 129);
 }
 .LoginBox .LoginBoxBody .LoginBoxFooter .help_link {
   text-align: left;
 }
 .LoginBox .LoginBoxBody .LoginBoxFooter .help_link a {
   text-decoration: none;
-  color: #2876d0;
+  color: rgb(254, 24, 33);
 }
 .LoginBox .LoginBoxBody .LoginBoxFooter .help_link a:hover {
   text-decoration: underline;
@@ -66,7 +66,7 @@
 }
 .LoginBox .LoginBoxBody .LoginBoxFooter .forogt_password a {
   text-decoration: none;
-  color: #2876d0;
+  color: rgb(254, 24, 33);
 }
 .LoginBox .LoginBoxBody .LoginBoxFooter .forogt_password a:hover {
   text-decoration: underline;
@@ -100,7 +100,7 @@
   background: #ababab;
 }
 .LoginBox .LoginBoxBody .LoginBoxFooter .LoginButton button {
-  background-color: #2876d0;
+  background-color: rgb(228, 71, 76);
   color: #fff;
   padding: 15px 20px;
   border: none;
@@ -112,7 +112,7 @@
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
 }
 .LoginBox .LoginBoxBody .LoginBoxFooter .LoginButton button:hover {
-  background-color: #116ec6;
+  background-color: rgb(170, 50, 54);
 }
 .LoginBox .LoginBoxBody .LoginBoxFooter .LoginButton button.googlebtn i {
   margin-right: 5px;
@@ -122,7 +122,7 @@
 }
 .LoginBox .LoginBoxBody .LoginBoxFooter .signup_link a {
   text-decoration: none;
-  color: #2876d0;
+  color: rgb(254, 24, 33);
   margin-left: 3px;
 }
 .LoginBox .LoginBoxBody .LoginBoxFooter .signup_link a:hover {
