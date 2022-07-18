@@ -1,9 +1,10 @@
 import React from "react";
 import { useRef } from "react";
-import { Form_error } from "../error/form_error"
+import { Form_error } from "../error/form_error";
 import lgn from "../../../styles/login.module.css";
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { doc, setDoc, getFirestore } from "firebase/firestore";
 
 //
 
@@ -23,11 +24,11 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const provider = new GoogleAuthProvider();
 const auth = getAuth();
+const db = getFirestore();
 
 export function GoogleSignIn({}) {
   const errorClass = useRef();
   const errorMsg = useRef();
-
 
   // ... Sign in with Google Firebase API Function ==> to The App(*pickfriend app*) ...
   const signInWithGoogle = async () => {
@@ -40,6 +41,23 @@ export function GoogleSignIn({}) {
         const token = credential.accessToken;
         // The signed-in user info.
         const user = result.user;
+        const email = user.email;
+        const name = user.displayName;
+        const photoURL = user.photoURL;
+        console.log("user => ", user);
+
+        const loginGooogleAuth = () => {
+          const userid = Math.random().toString(36).substring(2, 15);
+          setDoc(doc(db, "GoogleLogin", userid), {
+            id: userid,
+            email: email,
+            name: name,
+            photoURL: photoURL,
+            LoggedinAt: new Date(),
+          });
+          return userid;
+        };
+        loginGooogleAuth();
         // ...
       })
       .catch((error) => {
