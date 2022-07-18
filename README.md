@@ -21,11 +21,11 @@ If you have any feedback, please reach out to us at [Pic DEV](mailto:picincapp@g
 
 Our app will soon be available on the Google Play Store, Apple Store and the Web Soon.
 
-
 #
 
 Note that this is a beta version of the app. And it's not yet ready for production use. We are working hard to make it ready for production use. Also note that this project has copyrights and is not open source. The only way to contribute is to first fill an application form. If your application is accepted, we will be happy to bring you in as a contributor. Any acts of copyright infringement will be dealt with which will result in a lawsuit.
-So create your own projects don't copy other's projects. All other Projects I have made are free and open-source but this project is not. 
+So create your own projects don't copy other's projects. All other Projects I have made are free and open-source but this project is not.
+
 # Beware of copyright ⚠.
 
 ## Tech Stack
@@ -38,15 +38,15 @@ So create your own projects don't copy other's projects. All other Projects I ha
 
 <img src="https://www.svgrepo.com/show/353735/firebase.svg" width="100px"/>
 
-
 #
+
 ## Screenshots
 
 This screenshot has been removed by the developers due to copyright or privacy reasons.
 
 ## Support
 
-For support, email picincapp@gmail.com or join our [`Telegram channel`](https://t.me/fyteq).
+For support, email picincapp@gmail.com or join our [`Telegram channel`](https://t.me/picdevelopers).
 
 ## Optimizations
 
@@ -73,13 +73,12 @@ Our Privacy Policy states that we do not collect any sensitive information from 
 
 Copyright © 2020 Pick DEV. All rights reserved.
 
-
 ## Built with
 
 [Next.js by **Vercel**](https://nextjs.org)
 
 #
-  
+
 ## ℹ Information
 
-This project was built and designed by a student.
+This project was built and designed by a [treasurealekhojie](https://github.com/creative-tutorials) a student and a full stack web developer.
