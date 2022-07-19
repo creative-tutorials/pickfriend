@@ -1,3 +1,4 @@
+import { fetchUserStatus } from "./components/client/userStatus.jsx";
 import { Sidebar } from "./components/Sidebar/Sidebar";
 import { Header } from "./components/Header/Header";
 import Image from "next/image";
@@ -40,53 +41,13 @@ export default function Home() {
   const header_user = useRef();
   const dropdwn = useRef();
   const currSidebar = useRef();
-  //
-  const pollrefID = "ABCDEFGHIJKLMNOP";
-  let captureID = "";
-  for (let i = 0; i < 6; i++) {
-    captureID += pollrefID.charAt(Math.floor(Math.random() * pollrefID.length));
-  }
   useEffect(() => {
-    //
-
     return () => {
       getUserStatus();
     };
-  }, []);
+  });
 
-  const getUserStatus = async () => {
-    const usr = localStorage.getItem("emailval");
-    const getheaderUser = header_user.current;
-    if (usr) {
-      // alert("user is logged in");
-      console.log("user is logged in");
-      const q = query(
-        collection(db, "createdAccount"),
-        where("email", "==", localStorage.getItem("emailval"))
-      );
-
-      const querySnapshot = await getDocs(q);
-      querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data());
-        getheaderUser.innerHTML = doc.data().email;
-        // split getheaderUser.innerHTML to get the first part of the email
-        const splitEmail = getheaderUser.innerHTML.split("@");
-
-        // if email length is greater than 10 then truncate the email
-        if (splitEmail[0].length > 10) {
-          getheaderUser.innerHTML = splitEmail[0].substring(0, 10);
-        }
-      });
-      setUserStatus(true);
-    } else {
-      // alert("user is not logged in");
-      console.log("user is not logged in");
-      window.location.href = "/components/Auth/signup";
-      getheaderUser.innerHTML = "null";
-      setUserStatus(false);
-    }
-  };
+  const getUserStatus = fetchUserStatus(header_user, setUserStatus);
   const toogleClass = () => {
     //? toggle the dropdown class ====> show/hide
     const dropdown = dropdwn.current;
