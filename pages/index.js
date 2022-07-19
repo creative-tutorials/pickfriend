@@ -36,7 +36,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-export default function Home() {
+const Home = () => {
   const [userStatus, setUserStatus] = useState(null);
   const header_user = useRef();
   const dropdwn = useRef();
@@ -82,3 +82,4 @@ export default function Home() {
     </div>
   );
 }
+export default Home;
