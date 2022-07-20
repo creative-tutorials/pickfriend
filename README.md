@@ -2,8 +2,7 @@
 
 ![App Screenshot](/public/logo.jpg)
 
-PickFriend is a social media web application that allows you to upload your favorite images, thoughts and inspirational quotes
-PickFriend is a social media app that allows you to post your thoughts freely
+A friendly place for you to share your thoughts and goals. You can also find Inspiration from other people, learn new things, share some stories, get ready for the future.
 
 ## Authors
 
