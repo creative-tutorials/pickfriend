@@ -76,6 +76,6 @@ Copyright © 2020 Pick DEV. All rights reserved.
 
 #
 
-## ℹ Information
+## 🔔 Information
 
 This project was built and designed by a [treasurealekhojie](https://github.com/creative-tutorials) a student and a full stack web developer.
