@@ -56,14 +56,12 @@ To make app better we do optimize the app E.g. refactors, performance improvemen
 ## FAQ
 
 - **Question 1:** What is PickFriend?
-- **Answer 1:** PickFriend is a social media web application that allows you to upload your favorite images, thoughts and inspirational quotes
+- **Answer 1:** PickFriend is a friendly place for you to share your thoughts and goals. You can also find Inspiration from other people, learn new things, share some stories, get ready for the future.
 
 - **Question 2:** What can I do with PickFriend?
-
 - **Answer 2:** You can upload your images, thoughts and inspirational quotes to PickFriend and share them with your friends.
 
 - **Question 3:** Is PickFriend free?
-
 - **Answer 3:** Yes, PickFriend is free to use.
 
 ## Privacy Policy
