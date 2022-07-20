@@ -33,6 +33,10 @@ This project is open source so feel free to contribute and let's Collab and make
 
 **Backend:**
 
+<img src="https://www.svgrepo.com/show/354119/nodejs-icon.svg" width="100px"/>
+
+**Database:**
+
 <img src="https://www.svgrepo.com/show/353735/firebase.svg" width="100px"/>
 
 #
